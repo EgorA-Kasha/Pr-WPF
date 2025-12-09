@@ -1,12 +1,81 @@
-﻿<Window x:Class="Pr_WPF.MainWindow"
+﻿<Window x:Class="CarConfigurator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Pr_WPF"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Конфигуратор автомобиля" 
+        Width="800" 
+        Height="600" 
+        MinWidth="700" 
+        MinHeight="500"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="Border">
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource BackgroundGradient}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка с ProgressBar -->
+        <Border Grid.Row="0" Background="#2C3E50" Padding="20">
+            <StackPanel>
+                <TextBlock Text="Конфигуратор автомобиля" 
+                           Foreground="White" 
+                           FontSize="28" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"/>
+
+                <ProgressBar Value="{Binding CurrentStep}" 
+                           Maximum="5" 
+                           Height="20" 
+                           Margin="0,20,0,0"
+                           Foreground="#4CAF50"/>
+
+                <TextBlock Text="{Binding StepTitle}" 
+                           Foreground="White" 
+                           FontSize="16" 
+                           HorizontalAlignment="Center"
+                           Margin="0,10,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Контент страницы -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ContentControl Content="{Binding CurrentPage}"/>
+        </ScrollViewer>
+
+        <!-- Нижняя панель с кнопками -->
+        <Border Grid.Row="2" Background="#34495E" Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnBack" 
+                        Content="Назад" 
+                        Style="{StaticResource BackButtonStyle}"
+                        Click="btnBack_Click"
+                        Grid.Column="1"
+                        IsEnabled="{Binding CanGoBack}"/>
+
+                <Button x:Name="btnNext" 
+                        Content="{Binding NextButtonText}" 
+                        Style="{StaticResource NextButtonStyle}"
+                        Click="btnNext_Click"
+                        Grid.Column="2"
+                        Margin="20,0,0,0"
+                        IsEnabled="{Binding CanGoNext}"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
