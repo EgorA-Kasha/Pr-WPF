@@ -55,6 +55,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Step5.xaml.cs">
+      <DependentUpon>Step5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Step4.xaml.cs">
+      <DependentUpon>Step4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Step3.xaml.cs">
+      <DependentUpon>Step3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Step2.xaml.cs">
+      <DependentUpon>Step2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Step1.xaml.cs">
+      <DependentUpon>Step1.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,6 +83,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Step5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Step4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Step3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Step2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Step1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

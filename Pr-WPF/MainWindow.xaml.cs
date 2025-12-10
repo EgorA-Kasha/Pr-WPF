@@ -812,7 +812,7 @@ namespace CarConfigurator
                 $"Спасибо за заявку! С вами свяжется наш менеджер в течение 24 часов.",
                 "Заявка оформлена",
                 MessageBoxButton.OK,
-                MessageBoxImage.Information);
+                MessageBoxImage.Warning);
             
             Application.Current.Shutdown();
         }
