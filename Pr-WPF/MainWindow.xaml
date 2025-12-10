@@ -12,12 +12,10 @@
         <Style TargetType="Border">
             <Setter Property="CornerRadius" Value="5"/>
             <Setter Property="Background" Value="White"/>
-            <Setter Property="Padding" Value="20"/>
-            <Setter Property="Margin" Value="10"/>
         </Style>
     </Window.Resources>
 
-    <Grid Background="{StaticResource BackgroundGradient}">
+    <Grid Background="#F5F7FA">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -27,7 +25,7 @@
         <!-- Шапка с ProgressBar -->
         <Border Grid.Row="0" Background="#2C3E50" Padding="20">
             <StackPanel>
-                <TextBlock Text="Конфигуратор ведра с болтами" 
+                <TextBlock Text="Конфигуратор автомобиля" 
                            Foreground="White" 
                            FontSize="28" 
                            FontWeight="Bold"
@@ -48,9 +46,7 @@
         </Border>
 
         <!-- Контент страницы -->
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <ContentControl Content="{Binding CurrentPage}"/>
-        </ScrollViewer>
+        <ContentControl Grid.Row="1" Content="{Binding CurrentPage}"/>
 
         <!-- Нижняя панель с кнопками -->
         <Border Grid.Row="2" Background="#34495E" Padding="20">
@@ -63,17 +59,25 @@
 
                 <Button x:Name="btnBack" 
                         Content="Назад" 
-                        Style="{StaticResource BackButtonStyle}"
+                        Background="#f0f0f0"
+                        Padding="20,10"
+                        FontSize="14"
+                        Margin="5"
+                        MinWidth="100"
                         Click="btnBack_Click"
                         Grid.Column="1"
                         IsEnabled="{Binding CanGoBack}"/>
 
                 <Button x:Name="btnNext" 
                         Content="{Binding NextButtonText}" 
-                        Style="{StaticResource NextButtonStyle}"
+                        Background="#4CAF50"
+                        Foreground="White"
+                        Padding="20,10"
+                        FontSize="14"
+                        Margin="20,5,5,5"
+                        MinWidth="100"
                         Click="btnNext_Click"
                         Grid.Column="2"
-                        Margin="20,0,0,0"
                         IsEnabled="{Binding CanGoNext}"/>
             </Grid>
         </Border>
