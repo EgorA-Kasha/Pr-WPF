@@ -20,19 +20,49 @@ namespace CarConfigurator
     {
         private CarConfiguration _config;
         private int _currentStep = 1;
+        private bool _isLeavingStep5 = false;
 
         public int CurrentStep
         {
             get => _currentStep;
             set
             {
-                _currentStep = value;
-                OnPropertyChanged(nameof(CurrentStep));
-                OnPropertyChanged(nameof(StepTitle));
-                OnPropertyChanged(nameof(NextButtonText));
-                OnPropertyChanged(nameof(CanGoBack));
-                OnPropertyChanged(nameof(CanGoNext));
-                OnPropertyChanged(nameof(CurrentPage));
+                if (_currentStep == 5 && value < 5 && !_config.IsStep5Valid() && !_isLeavingStep5)
+                {
+                    // Показываем подтверждение при уходе с незаполненной заявки
+                    var result = MessageBox.Show(
+                        "Вы не завершили оформление заявки. Все введённые данные будут потеряны.\n\nПродолжить?",
+                        "Подтверждение",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Warning);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        _isLeavingStep5 = true;
+                        // Очищаем данные заявки
+                        _config.ClearApplicationData();
+                        _currentStep = value;
+                        _isLeavingStep5 = false;
+
+                        OnPropertyChanged(nameof(CurrentStep));
+                        OnPropertyChanged(nameof(StepTitle));
+                        OnPropertyChanged(nameof(NextButtonText));
+                        OnPropertyChanged(nameof(CanGoBack));
+                        OnPropertyChanged(nameof(CanGoNext));
+                        OnPropertyChanged(nameof(CurrentPage));
+                    }
+                    // Если пользователь сказал "Нет", остаемся на шаге 5
+                }
+                else
+                {
+                    _currentStep = value;
+                    OnPropertyChanged(nameof(CurrentStep));
+                    OnPropertyChanged(nameof(StepTitle));
+                    OnPropertyChanged(nameof(NextButtonText));
+                    OnPropertyChanged(nameof(CanGoBack));
+                    OnPropertyChanged(nameof(CanGoNext));
+                    OnPropertyChanged(nameof(CurrentPage));
+                }
             }
         }
 
@@ -141,9 +171,27 @@ namespace CarConfigurator
                 $"Спасибо за заявку! С вами свяжется наш менеджер в течение 24 часов.",
                 "Заявка оформлена",
                 MessageBoxButton.OK,
-                MessageBoxImage.Warning);
+                MessageBoxImage.Information);
 
             Application.Current.Shutdown();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Проверяем, есть ли несохраненные данные на шаге 5
+            if (_currentStep == 5 && !_config.IsStep5Valid())
+            {
+                var result = MessageBox.Show(
+                    "Вы не завершили оформление заявки. Все введённые данные будут потеряны.\n\nВыйти из программы?",
+                    "Подтверждение выхода",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+                if (result != MessageBoxResult.Yes)
+                {
+                    e.Cancel = true; // Отменяем закрытие окна
+                }
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

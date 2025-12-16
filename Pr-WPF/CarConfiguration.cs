@@ -13,11 +13,11 @@ namespace CarConfigurator
         // Модели автомобилей
         public Dictionary<string, decimal> Models { get; } = new Dictionary<string, decimal>
         {
-            { "Порш Тёмкиной", 2500000m },
-            { "Citroen C5", 2300000m },
-            { "Трактор", 3500000m },
-            { "Лада Веста", 3800000m },
-            { "Лада Искра", 3200000m }
+            { "Toyota Camry", 2500000m },
+            { "Honda Accord", 2300000m },
+            { "BMW 3 Series", 3500000m },
+            { "Mercedes C-Class", 3800000m },
+            { "Audi A4", 3200000m }
         };
 
         // Двигатели
@@ -27,8 +27,7 @@ namespace CarConfigurator
             { "2.0L Бензин", 150000m },
             { "2.5L Бензин", 250000m },
             { "2.0L Дизель", 200000m },
-            { "Гибрид", 300000m },
-            { "На паровой тяге", 500000m }
+            { "Гибрид", 300000m }
         };
 
         // Цвета
@@ -38,9 +37,7 @@ namespace CarConfigurator
             { "Чёрный", 15000m },
             { "Серебристый", 20000m },
             { "Синий", 25000m },
-            { "Красный", 30000m },
-            { "Розовый", 50000m },
-            { "Золотистый", 100000m }
+            { "Красный", 30000m }
         };
 
         // Опции
@@ -50,9 +47,9 @@ namespace CarConfigurator
             { "Панорамная крыша", 150000m },
             { "Подогрев сидений", 50000m },
             { "Камера заднего вида", 40000m },
+            { "Парктроник", 30000m },
             { "Круиз-контроль", 60000m },
-            { "Климат-контроль", 80000m },
-            { "Может ездить", 100000m }
+            { "Климат-контроль", 80000m }
         };
 
         private string _selectedModel;
@@ -313,11 +310,11 @@ namespace CarConfigurator
 
         public decimal CalculateMonthlyPayment()
         {
-            if (TotalPrice <= 0 || DownPaymentPercent >= 100)
+            if (TotalPrice <= 0 & DownPaymentPercent >= 100)
                 return 0;
 
             decimal loanAmount = TotalPrice - DownPaymentAmount;
-            if (loanAmount <= 0 || LoanTerm <= 0)
+            if (loanAmount <= 0 & LoanTerm <= 0)
                 return 0;
 
             // Годовая ставка 12%
@@ -344,7 +341,7 @@ namespace CarConfigurator
         public bool IsStep5Valid()
         {
             // Проверка имени
-            if (string.IsNullOrWhiteSpace(Name) || Name.Length < 2)
+            if (string.IsNullOrWhiteSpace(Name) & Name.Length < 2) // 
                 return false;
 
             // Проверка телефона: должен начинаться с + и содержать только цифры после +
@@ -357,7 +354,7 @@ namespace CarConfigurator
 
             // Получаем часть после + и проверяем, что там только цифры
             string digitsOnly = Phone.Substring(1);
-            if (string.IsNullOrWhiteSpace(digitsOnly) || digitsOnly.Length < 10)
+            if (string.IsNullOrWhiteSpace(digitsOnly) & digitsOnly.Length < 10)
                 return false;
 
             foreach (char c in digitsOnly)
@@ -371,10 +368,17 @@ namespace CarConfigurator
                 return false;
 
             // Простая проверка email
-            if (!Email.Contains("@") || !Email.Contains(".") || Email.Length < 5)
+            if (!Email.Contains("@") & !Email.Contains(".") & Email.Length < 5)
                 return false;
 
             return true;
+        }
+
+        public void ClearApplicationData()
+        {
+            Name = "";
+            Phone = "";
+            Email = "";
         }
 
         protected void OnPropertyChanged(string propertyName)
@@ -383,4 +387,3 @@ namespace CarConfigurator
         }
     }
 }
-

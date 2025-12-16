@@ -8,15 +8,87 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20">
-            <TextBlock Text="Сводка конфигурации" 
+            <TextBlock x:Name="titleText"
+                       Text="Сводка конфигурации" 
                        FontSize="16" FontWeight="SemiBold" 
                        Margin="0,0,0,10"/>
 
+            <!-- Сводка конфигурации -->
             <Border Background="WhiteSmoke" Padding="15" Margin="0,20,0,0">
-                <StackPanel x:Name="summaryPanel"/>
+                <StackPanel>
+                    <!-- Модель -->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Модель:" 
+                                   FontWeight="Bold" Width="150"/>
+                        <TextBlock x:Name="modelText"/>
+                    </StackPanel>
+
+                    <!-- Двигатель -->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Двигатель:" 
+                                   FontWeight="Bold" Width="150"/>
+                        <TextBlock x:Name="engineText"/>
+                    </StackPanel>
+
+                    <!-- Цвет -->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Цвет:" 
+                                   FontWeight="Bold" Width="150"/>
+                        <TextBlock x:Name="colorText"/>
+                    </StackPanel>
+
+                    <Separator Margin="0,10,0,10"/>
+
+                    <!-- Опции -->
+                    <TextBlock Text="Выбранные опции:" 
+                               FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBlock x:Name="optionsText"
+                               Margin="20,0,0,0" FontStyle="Italic"/>
+                </StackPanel>
             </Border>
 
-            <StackPanel Margin="0,30,0,0" x:Name="pricePanel"/>
+            <!-- Цены -->
+            <StackPanel Margin="0,30,0,0">
+                <!-- Базовая цена -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Базовая цена модели:" 
+                               Width="250" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="basePriceText"/>
+                </StackPanel>
+
+                <!-- Двигатель -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Доплата за двигатель:" 
+                               Width="250" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="enginePriceText"/>
+                </StackPanel>
+
+                <!-- Цвет -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Доплата за цвет:" 
+                               Width="250" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="colorPriceText"/>
+                </StackPanel>
+
+                <!-- Опции -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Дополнительные опции:" 
+                               Width="250" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="optionsPriceText"/>
+                </StackPanel>
+
+                <Separator Margin="0,10,0,10"/>
+
+                <!-- Итог -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="ИТОГО:" 
+                               FontSize="20" FontWeight="Bold" 
+                               Margin="0,0,20,0"/>
+                    <TextBlock x:Name="totalPriceText"
+                               FontSize="24" FontWeight="Bold"
+                               Foreground="DarkGreen"/>
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

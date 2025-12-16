@@ -6,7 +6,8 @@
         Height="600" 
         MinWidth="700" 
         MinHeight="500"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing">
 
     <Window.Resources>
         <Style TargetType="Border">
@@ -25,7 +26,7 @@
         <!-- Шапка с ProgressBar -->
         <Border Grid.Row="0" Background="#2C3E50" Padding="20">
             <StackPanel>
-                <TextBlock Text="Конфигуратор ведра с болтами" 
+                <TextBlock Text="Конфигуратор автомобиля" 
                            Foreground="White" 
                            FontSize="28" 
                            FontWeight="Bold"
@@ -56,6 +57,12 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
+
+                <TextBlock Text="* - обязательные для заполнения поля" 
+                           Foreground="#CCCCCC" 
+                           FontSize="12"
+                           VerticalAlignment="Center"
+                           Grid.Column="0"/>
 
                 <Button x:Name="btnBack" 
                         Content="Назад" 

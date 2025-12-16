@@ -34,21 +34,14 @@ namespace CarConfigurator
             if (!string.IsNullOrEmpty(_config.SelectedColor))
                 colorCombo.SelectedItem = _config.SelectedColor;
 
-            // Загружаем опции
-            optionsPanel.Children.Clear();
-            foreach (var option in _config.Options)
-            {
-                var checkBox = new CheckBox
-                {
-                    FontSize = 14,
-                    Margin = new Thickness(0, 5, 0, 5),
-                    Content = $"{option.Key} (+{option.Value:N0} руб.)",
-                    IsChecked = _config.SelectedOptions.Contains(option.Key)
-                };
-                checkBox.Checked += (s, e) => _config.ToggleOption(option.Key);
-                checkBox.Unchecked += (s, e) => _config.ToggleOption(option.Key);
-                optionsPanel.Children.Add(checkBox);
-            }
+            // Устанавливаем состояния CheckBox
+            leatherInteriorCheck.IsChecked = _config.SelectedOptions.Contains("Кожаный салон");
+            panoramicRoofCheck.IsChecked = _config.SelectedOptions.Contains("Панорамная крыша");
+            heatedSeatsCheck.IsChecked = _config.SelectedOptions.Contains("Подогрев сидений");
+            rearCameraCheck.IsChecked = _config.SelectedOptions.Contains("Камера заднего вида");
+            parkingSensorsCheck.IsChecked = _config.SelectedOptions.Contains("Парктроник");
+            cruiseControlCheck.IsChecked = _config.SelectedOptions.Contains("Круиз-контроль");
+            climateControlCheck.IsChecked = _config.SelectedOptions.Contains("Климат-контроль");
         }
 
         private void SetupBindings()
@@ -58,6 +51,28 @@ namespace CarConfigurator
                 if (colorCombo.SelectedItem != null)
                     _config.SelectedColor = colorCombo.SelectedItem.ToString();
             };
+
+            // Привязки CheckBox
+            leatherInteriorCheck.Checked += (s, e) => _config.ToggleOption("Кожаный салон");
+            leatherInteriorCheck.Unchecked += (s, e) => _config.ToggleOption("Кожаный салон");
+
+            panoramicRoofCheck.Checked += (s, e) => _config.ToggleOption("Панорамная крыша");
+            panoramicRoofCheck.Unchecked += (s, e) => _config.ToggleOption("Панорамная крыша");
+
+            heatedSeatsCheck.Checked += (s, e) => _config.ToggleOption("Подогрев сидений");
+            heatedSeatsCheck.Unchecked += (s, e) => _config.ToggleOption("Подогрев сидений");
+
+            rearCameraCheck.Checked += (s, e) => _config.ToggleOption("Камера заднего вида");
+            rearCameraCheck.Unchecked += (s, e) => _config.ToggleOption("Камера заднего вида");
+
+            parkingSensorsCheck.Checked += (s, e) => _config.ToggleOption("Парктроник");
+            parkingSensorsCheck.Unchecked += (s, e) => _config.ToggleOption("Парктроник");
+
+            cruiseControlCheck.Checked += (s, e) => _config.ToggleOption("Круиз-контроль");
+            cruiseControlCheck.Unchecked += (s, e) => _config.ToggleOption("Круиз-контроль");
+
+            climateControlCheck.Checked += (s, e) => _config.ToggleOption("Климат-контроль");
+            climateControlCheck.Unchecked += (s, e) => _config.ToggleOption("Климат-контроль");
 
             _config.PropertyChanged += (s, e) =>
             {

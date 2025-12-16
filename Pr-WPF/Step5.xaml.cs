@@ -18,6 +18,9 @@ namespace CarConfigurator
     public partial class Step5Page : UserControl
     {
         private CarConfiguration _config;
+        private bool _nameWasEdited = false;
+        private bool _phoneWasEdited = false;
+        private bool _emailWasEdited = false;
 
         public Step5Page(CarConfiguration config)
         {
@@ -25,96 +28,177 @@ namespace CarConfigurator
             _config = config;
             LoadData();
             SetupBindings();
+            UpdateSummary();
         }
 
         private void LoadData()
         {
             if (!string.IsNullOrEmpty(_config.Name))
+            {
                 nameBox.Text = _config.Name;
+                _nameWasEdited = true;
+            }
 
             if (!string.IsNullOrEmpty(_config.Phone))
+            {
                 phoneBox.Text = _config.Phone;
+                _phoneWasEdited = true;
+            }
 
             if (!string.IsNullOrEmpty(_config.Email))
+            {
                 emailBox.Text = _config.Email;
-
-            UpdateSummary();
+                _emailWasEdited = true;
+            }
         }
 
         private void SetupBindings()
         {
-            nameBox.TextChanged += (s, e) => _config.Name = nameBox.Text;
-            phoneBox.TextChanged += (s, e) => _config.Phone = phoneBox.Text;
-            emailBox.TextChanged += (s, e) => _config.Email = emailBox.Text;
+            nameBox.LostFocus += (s, e) =>
+            {
+                _nameWasEdited = true;
+                ValidateName();
+            };
+
+            phoneBox.LostFocus += (s, e) =>
+            {
+                _phoneWasEdited = true;
+                ValidatePhone();
+            };
+
+            emailBox.LostFocus += (s, e) =>
+            {
+                _emailWasEdited = true;
+                ValidateEmail();
+            };
+
+            nameBox.TextChanged += (s, e) =>
+            {
+                _config.Name = nameBox.Text;
+                if (_nameWasEdited)
+                    ValidateName();
+            };
+
+            phoneBox.TextChanged += (s, e) =>
+            {
+                _config.Phone = phoneBox.Text;
+                if (_phoneWasEdited)
+                    ValidatePhone();
+            };
+
+            emailBox.TextChanged += (s, e) =>
+            {
+                _config.Email = emailBox.Text;
+                if (_emailWasEdited)
+                    ValidateEmail();
+            };
 
             _config.PropertyChanged += (s, e) =>
             {
-                if (e.PropertyName == nameof(_config.TotalPrice) ||
-                    e.PropertyName == nameof(_config.SelectedModel) ||
+                if (e.PropertyName == nameof(_config.SelectedModel) ||
                     e.PropertyName == nameof(_config.SelectedEngine) ||
-                    e.PropertyName == nameof(_config.SelectedColor))
+                    e.PropertyName == nameof(_config.SelectedColor) ||
+                    e.PropertyName == nameof(_config.TotalPrice) ||
+                    e.PropertyName == nameof(_config.SelectedOptions))
                 {
                     UpdateSummary();
                 }
             };
+
+            if (_nameWasEdited) ValidateName();
+            if (_phoneWasEdited) ValidatePhone();
+            if (_emailWasEdited) ValidateEmail();
+        }
+
+        private void ValidateName()
+        {
+            bool isValid = !string.IsNullOrWhiteSpace(_config.Name) && _config.Name.Length >= 2;
+            UpdateValidation(nameBox, isValid,
+                isValid ? "Поле заполнено корректно" : "Имя должно содержать минимум 2 символа");
+        }
+
+        private void ValidatePhone()
+        {
+            bool isValid = !string.IsNullOrWhiteSpace(_config.Phone) &&
+                          _config.Phone.StartsWith("+") &&
+                          _config.Phone.Substring(1).All(char.IsDigit) &&
+                          _config.Phone.Substring(1).Length >= 10;
+            UpdateValidation(phoneBox, isValid,
+                isValid ? "Поле заполнено корректно" : "Телефон должен начинаться с + и содержать минимум 10 цифр");
+        }
+
+        private void ValidateEmail()
+        {
+            bool isValid = !string.IsNullOrWhiteSpace(_config.Email) &&
+                          _config.
+Email.Contains("@") &&
+                          _config.Email.Contains(".") &&
+                          _config.Email.Length >= 5;
+            UpdateValidation(emailBox, isValid,
+                isValid ? "Поле заполнено корректно" : "Введите корректный email адрес");
+        }
+
+        private void UpdateValidation(TextBox textBox, bool isValid, string tooltipText)
+        {
+            if (!IsFieldEdited(textBox))
+            {
+                textBox.BorderBrush = Brushes.Gray;
+                textBox.ToolTip = GetDefaultTooltip(textBox);
+            }
+            else if (isValid)
+            {
+                textBox.BorderBrush = Brushes.Green;
+                textBox.ToolTip = tooltipText;
+            }
+            else
+            {
+                textBox.BorderBrush = Brushes.Red;
+                textBox.ToolTip = tooltipText;
+            }
+        }
+
+        private bool IsFieldEdited(TextBox textBox)
+        {
+            if (textBox == nameBox) return _nameWasEdited;
+            if (textBox == phoneBox) return _phoneWasEdited;
+            if (textBox == emailBox) return _emailWasEdited;
+            return false;
+        }
+
+        private string GetDefaultTooltip(TextBox textBox)
+        {
+            if (textBox == nameBox)
+                return "Введите имя (минимум 2 символа)";
+            else if (textBox == phoneBox)
+                return "Введите телефон в формате: +7XXXXXXXXXX (минимум 10 цифр после +)";
+            else if (textBox == emailBox)
+                return "Введите email адрес";
+            return "";
         }
 
         private void UpdateSummary()
         {
-            summaryPanel.Children.Clear();
+            modelEngineText.Text = $"{_config.SelectedModel}, {_config.SelectedEngine}";
 
-            summaryPanel.Children.Add(new TextBlock
-            {
-                Text = "Итоговая конфигурация",
-                FontWeight = FontWeights.Bold,
-                FontSize = 16,
-                Margin = new Thickness(0, 0, 0, 10)
-            });
-
-            summaryPanel.Children.Add(new TextBlock
-            {
-                Text = $"{_config.SelectedModel}, {_config.SelectedEngine}",
-                Margin = new Thickness(0, 0, 0, 5)
-            });
-
-            summaryPanel.Children.Add(new TextBlock
-            {
-                Text = $"Цвет: {_config.SelectedColor}",
-                Margin = new Thickness(0, 0, 0, 5)
-            });
+            colorSummaryText.Text = _config.SelectedColor ?? "";
 
             if (_config.SelectedOptions.Count > 0)
             {
-                var optionsText = $"Опции: {string.Join(", ", _config.SelectedOptions.Take(3))}";
+                var options = string.Join(", ", _config.SelectedOptions.Take(3));
                 if (_config.SelectedOptions.Count > 3)
-                    optionsText += "...";
-
-                summaryPanel.Children.Add(new TextBlock
-                {
-                    Text = optionsText,
-                    Margin = new Thickness(0, 0, 0, 5)
-                });
+                    options += "...";
+                optionsSummaryText.Text = options;
+            }
+            else
+            {
+                optionsSummaryText.Text = "Нет выбранных опций";
             }
 
-            summaryPanel.Children.Add(new Separator { Margin = new Thickness(0, 10, 0, 10) });
-
-            var totalText = new TextBlock
-            {
-                FontSize = 18,
-                FontWeight = FontWeights.Bold,
-                Foreground = System.Windows.Media.Brushes.DarkGreen,
-                Text = $"Итоговая стоимость: {_config.TotalPrice:N0} руб."
-            };
-            summaryPanel.Children.Add(totalText);
+            // Обновляем цены
+            finalPriceText.Text = $"{_config.TotalPrice:N0} руб.";
 
             var monthlyPayment = _config.CalculateMonthlyPayment();
-            var monthlyText = new TextBlock
-            {
-                FontSize = 16,
-                Margin = new Thickness(0, 5, 0, 0),
-                Text = $"Ежемесячный платёж: {monthlyPayment:N0} руб."
-            };
-            summaryPanel.Children.Add(monthlyText);
+            monthlyPaymentSummaryText.Text = $"{monthlyPayment:N0} руб.";
         }
     }
 }

@@ -24,103 +24,58 @@ namespace CarConfigurator
             InitializeComponent();
             _config = config;
             LoadData();
+            SetupBindings();
         }
 
         private void LoadData()
         {
-            // Очищаем панели
-            summaryPanel.Children.Clear();
-            pricePanel.Children.Clear();
-
-            // Добавляем сводку
-            AddSummaryItem("Модель:", _config.SelectedModel);
-            AddSummaryItem("Двигатель:", _config.SelectedEngine);
-            AddSummaryItem("Цвет:", _config.SelectedColor);
-
-            summaryPanel.Children.Add(new Separator { Margin = new Thickness(0, 10, 0, 10) });
-
-            var optionsLabel = new TextBlock
-            {
-                Text = "Выбранные опции:",
-                FontWeight = FontWeights.Bold,
-                Margin = new Thickness(0, 0, 0, 5)
-            };
-            summaryPanel.Children.Add(optionsLabel);
-
-            foreach (var option in _config.SelectedOptions)
-            {
-                summaryPanel.Children.Add(new TextBlock
-                {
-                    Text = $"• {option}",
-                    Margin = new Thickness(20, 0, 0, 2)
-                });
-            }
-
-            if (_config.SelectedOptions.Count == 0)
-            {
-                summaryPanel.Children.Add(new TextBlock
-                {
-                    Text = "Нет выбранных опций",
-                    Margin = new Thickness(20, 0, 0, 2),
-                    FontStyle = FontStyles.Italic
-                });
-            }
-
-            // Добавляем цены
-            AddPriceItem("Базовая цена модели:", _config.BasePrice);
-            AddPriceItem("Доплата за двигатель:", _config.EnginePrice);
-            AddPriceItem("Доплата за цвет:", _config.ColorPrice);
-            AddPriceItem("Дополнительные опции:", _config.OptionsPrice);
-
-            pricePanel.Children.Add(new Separator { Margin = new Thickness(0, 10, 0, 10) });
-
-            var totalPanel = new StackPanel { Orientation = Orientation.Horizontal };
-            totalPanel.Children.Add(new TextBlock
-            {
-                Text = "ИТОГО:",
-                FontSize = 20,
-                FontWeight = FontWeights.Bold,
-                Margin = new Thickness(0, 0, 20, 0)
-            });
-
-            var totalText = new TextBlock
-            {
-                FontSize = 24,
-                FontWeight = FontWeights.Bold,
-                Foreground = System.Windows.Media.Brushes.DarkGreen,
-                Text = $"{_config.TotalPrice:N0} руб."
-            };
-            totalPanel.Children.Add(totalText);
-
-            pricePanel.Children.Add(totalPanel);
+            UpdateAllFields();
         }
 
-        private void AddSummaryItem(string label, string value)
+        private void SetupBindings()
         {
-            var itemPanel = new StackPanel { Orientation = Orientation.Horizontal };
-            itemPanel.Children.Add(new TextBlock
+            _config.PropertyChanged += (s, e) =>
             {
-                Text = label,
-                FontWeight = FontWeights.Bold,
-                Width = 150
-            });
-            itemPanel.Children.Add(new TextBlock { Text = value ?? "" });
-            summaryPanel.Children.Add(itemPanel);
+                if (e.PropertyName == nameof(_config.SelectedModel) ||
+                    e.PropertyName == nameof(_config.SelectedEngine) ||
+                    e.PropertyName == nameof(_config.SelectedColor) ||
+                    e.PropertyName == nameof(_config.SelectedOptions) ||
+                    e.PropertyName == nameof(_config.BasePrice) ||
+                    e.PropertyName == nameof(_config.EnginePrice) ||
+                    e.PropertyName == nameof(_config.ColorPrice) ||
+                    e.PropertyName == nameof(_config.OptionsPrice) ||
+                    e.PropertyName == nameof(_config.TotalPrice))
+                {
+                    UpdateAllFields();
+                }
+            };
         }
 
-        private void AddPriceItem(string label, decimal value)
+        private void UpdateAllFields()
         {
-            var itemPanel = new StackPanel { Orientation = Orientation.Horizontal };
-            itemPanel.Children.Add(new TextBlock
-            {
-                Text = label,
-                Width = 250,
-                Margin = new Thickness(0, 0, 10, 0)
-            });
+            modelText.Text = _config.SelectedModel ?? "";
+            engineText.Text = _config.SelectedEngine ?? "";
+            colorText.Text = _config.SelectedColor ?? "";
 
-            var valueText = new TextBlock { Text = $"{value:N0} руб." };
-            itemPanel.Children.Add(valueText);
-            pricePanel.Children.Add(itemPanel);
+            if (_config.SelectedOptions.Count > 0)
+            {
+                var options = string.Join(", ", _config.SelectedOptions.Take(3));
+                if (_config.SelectedOptions.Count > 3)
+                    options += "...";
+                optionsText.Text = options;
+                optionsText.FontStyle = FontStyles.Normal;
+            }
+            else
+            {
+                optionsText.Text = "Нет выбранных опций";
+                optionsText.FontStyle = FontStyles.Italic;
+            }
+
+            basePriceText.Text = $"{_config.BasePrice:N0} руб.";
+            enginePriceText.Text = $"{_config.EnginePrice:N0} руб.";
+            colorPriceText.Text = $"{_config.ColorPrice:N0} руб.";
+            optionsPriceText.Text = $"{_config.OptionsPrice:N0} руб.";
+            totalPriceText.Text = $"{_config.TotalPrice:N0} руб.";
         }
     }
 }

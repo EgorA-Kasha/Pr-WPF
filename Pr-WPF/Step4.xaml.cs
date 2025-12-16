@@ -54,55 +54,27 @@ namespace CarConfigurator
                     e.PropertyName == nameof(_config.DownPaymentPercent) ||
                     e.PropertyName == nameof(_config.LoanTerm))
                 {
-                    totalPriceText.Text = $"{_config.TotalPrice:N0} руб.";
-                    downPaymentValue.Text = $"{_config.DownPaymentPercent:F0}%";
-                    termValue.Text = $"{_config.LoanTerm} мес.";
                     UpdateCreditDisplay();
                 }
             };
-
-            totalPriceText.Text = $"{_config.TotalPrice:N0} руб.";
-            downPaymentValue.Text = $"{_config.DownPaymentPercent:F0}%";
-            termValue.Text = $"{_config.LoanTerm} мес.";
         }
 
         private void UpdateCreditDisplay()
         {
-            var calcStack = new StackPanel();
+            carPriceText.Text = $"{_config.TotalPrice:N0} руб.";
+            downPaymentValueText.Text = $"{_config.DownPaymentPercent:F0}%";
+            termValueText.Text = $"{_config.LoanTerm} мес.";
 
-            calcStack.Children.Add(new TextBlock
-            {
-                Text = "Расчёт кредита",
-                FontWeight = FontWeights.Bold,
-                FontSize = 16,
-                Margin = new Thickness(0, 0, 0, 10)
-            });
+            downPaymentAmountText.Text = $"{_config.DownPaymentAmount:N0} руб.";
 
-            AddCalculationItem(calcStack, "Первоначальный взнос:", _config.DownPaymentAmount);
-            AddCalculationItem(calcStack, "Сумма кредита:", _config.TotalPrice - _config.DownPaymentAmount);
+            decimal loanAmount = _config.TotalPrice - _config.DownPaymentAmount;
+            loanAmountText.Text = $"{loanAmount:N0} руб.";
 
             var monthlyPayment = _config.CalculateMonthlyPayment();
-            AddCalculationItem(calcStack, "Ежемесячный платёж:", monthlyPayment);
+            monthlyPaymentText.Text = $"{monthlyPayment:N0} руб.";
 
             var totalPayment = monthlyPayment * _config.LoanTerm + _config.DownPaymentAmount;
-            AddCalculationItem(calcStack, "Общая сумма выплат:", totalPayment);
-
-            calculationPanel.Child = calcStack;
-        }
-
-        private void AddCalculationItem(Panel panel, string label, decimal value)
-        {
-            var itemPanel = new StackPanel { Orientation = Orientation.Horizontal };
-            itemPanel.Children.Add(new TextBlock
-            {
-                Text = label,
-                Width = 200,
-                Margin = new Thickness(0, 0, 10, 0)
-            });
-
-            var valueText = new TextBlock { Text = $"{value:N0} руб." };
-            itemPanel.Children.Add(valueText);
-            panel.Children.Add(itemPanel);
+            totalPaymentText.Text = $"{totalPayment:N0} руб.";
         }
     }
 }
