@@ -34,7 +34,6 @@ namespace CarConfigurator
             if (!string.IsNullOrEmpty(_config.SelectedColor))
                 colorCombo.SelectedItem = _config.SelectedColor;
 
-            // Устанавливаем состояния CheckBox
             leatherInteriorCheck.IsChecked = _config.SelectedOptions.Contains("Кожаный салон");
             panoramicRoofCheck.IsChecked = _config.SelectedOptions.Contains("Панорамная крыша");
             heatedSeatsCheck.IsChecked = _config.SelectedOptions.Contains("Подогрев сидений");
@@ -52,7 +51,6 @@ namespace CarConfigurator
                     _config.SelectedColor = colorCombo.SelectedItem.ToString();
             };
 
-            // Привязки CheckBox
             leatherInteriorCheck.Checked += (s, e) => _config.ToggleOption("Кожаный салон");
             leatherInteriorCheck.Unchecked += (s, e) => _config.ToggleOption("Кожаный салон");
 

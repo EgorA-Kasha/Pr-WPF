@@ -10,37 +10,40 @@ namespace CarConfigurator
 {
     public class CarConfiguration : INotifyPropertyChanged
     {
-        // Модели автомобилей
+        // модели автомобилей
         public Dictionary<string, decimal> Models { get; } = new Dictionary<string, decimal>
         {
-            { "Toyota Camry", 2500000m },
-            { "Honda Accord", 2300000m },
-            { "BMW 3 Series", 3500000m },
-            { "Mercedes C-Class", 3800000m },
-            { "Audi A4", 3200000m }
+            { "Порш Тёмкиной", 2500000m },
+            { "Велосипед", 2300000m },
+            { "Трактор", 3500000m },
+            { "Лада Искра", 3800000m },
+            { "Лада Веста", 3200000m }
         };
 
-        // Двигатели
+        // двигатели
         public Dictionary<string, decimal> Engines { get; } = new Dictionary<string, decimal>
         {
             { "1.6L Бензин", 0m },
             { "2.0L Бензин", 150000m },
             { "2.5L Бензин", 250000m },
             { "2.0L Дизель", 200000m },
-            { "Гибрид", 300000m }
+            { "Гибрид", 300000m },
+            { "На паровой тяге", 350000m },
+            { "С божьей помощью", 500000m },
         };
 
-        // Цвета
+        // цвета
         public Dictionary<string, decimal> Colors { get; } = new Dictionary<string, decimal>
         {
             { "Белый", 0m },
             { "Чёрный", 15000m },
             { "Серебристый", 20000m },
             { "Синий", 25000m },
-            { "Красный", 30000m }
+            { "Красный", 30000m },
+            { "Розовенький", 60000m }
         };
 
-        // Опции
+        // опции
         public Dictionary<string, decimal> Options { get; } = new Dictionary<string, decimal>
         {
             { "Кожаный салон", 100000m },
@@ -49,7 +52,8 @@ namespace CarConfigurator
             { "Камера заднего вида", 40000m },
             { "Парктроник", 30000m },
             { "Круиз-контроль", 60000m },
-            { "Климат-контроль", 80000m }
+            { "Климат-контроль", 80000m },
+            { "Может ездить", 100000m }
         };
 
         private string _selectedModel;
@@ -285,7 +289,6 @@ namespace CarConfigurator
 
                 decimal newTotalPrice = newBasePrice + newEnginePrice + newColorPrice + newOptionsPrice;
 
-                // Устанавливаем значения
                 BasePrice = newBasePrice;
                 EnginePrice = newEnginePrice;
                 ColorPrice = newColorPrice;
@@ -317,11 +320,10 @@ namespace CarConfigurator
             if (loanAmount <= 0 & LoanTerm <= 0)
                 return 0;
 
-            // Годовая ставка 12%
+            // годовая ставка 12%
             decimal annualRate = 12m;
             decimal monthlyRate = annualRate / 100 / 12;
 
-            // Явное преобразование decimal в double для Math.Pow
             double temp = Math.Pow((double)(1 + monthlyRate), LoanTerm);
             decimal monthlyPayment = loanAmount * (monthlyRate * (decimal)temp) / ((decimal)temp - 1);
 
@@ -340,21 +342,25 @@ namespace CarConfigurator
 
         public bool IsStep5Valid()
         {
-            // Проверка имени
-            if (string.IsNullOrWhiteSpace(Name) & Name.Length < 2) // 
+            // проверка имени
+            if (string.IsNullOrWhiteSpace(Name))
                 return false;
 
-            // Проверка телефона: должен начинаться с + и содержать только цифры после +
+            if (Name.Length < 2) 
+                return false;
+
+            // проверка телефона: должен начинаться с + и содержать только цифры после +
             if (string.IsNullOrWhiteSpace(Phone))
                 return false;
 
-            // Проверяем, начинается ли телефон с +
             if (!Phone.StartsWith("+"))
                 return false;
 
-            // Получаем часть после + и проверяем, что там только цифры
             string digitsOnly = Phone.Substring(1);
-            if (string.IsNullOrWhiteSpace(digitsOnly) & digitsOnly.Length < 10)
+            if (string.IsNullOrWhiteSpace(digitsOnly))
+                return false;
+
+            if (digitsOnly.Length < 16)
                 return false;
 
             foreach (char c in digitsOnly)
@@ -363,12 +369,17 @@ namespace CarConfigurator
                     return false;
             }
 
-            // Проверка email
+            // проверка email
             if (string.IsNullOrWhiteSpace(Email))
                 return false;
 
-            // Простая проверка email
-            if (!Email.Contains("@") & !Email.Contains(".") & Email.Length < 5)
+            if (!Email.Contains("@"))
+                return false;
+
+            if (!Email.Contains("."))
+                return false;
+
+            if (Email.Length < 5)
                 return false;
 
             return true;

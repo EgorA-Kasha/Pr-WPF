@@ -29,7 +29,7 @@ namespace CarConfigurator
             {
                 if (_currentStep == 5 && value < 5 && !_config.IsStep5Valid() && !_isLeavingStep5)
                 {
-                    // Показываем подтверждение при уходе с незаполненной заявки
+                    // показываем подтверждение при уходе с незаполненной заявки
                     var result = MessageBox.Show(
                         "Вы не завершили оформление заявки. Все введённые данные будут потеряны.\n\nПродолжить?",
                         "Подтверждение",
@@ -39,7 +39,7 @@ namespace CarConfigurator
                     if (result == MessageBoxResult.Yes)
                     {
                         _isLeavingStep5 = true;
-                        // Очищаем данные заявки
+                        // очищаем данные заявки
                         _config.ClearApplicationData();
                         _currentStep = value;
                         _isLeavingStep5 = false;
@@ -51,7 +51,6 @@ namespace CarConfigurator
                         OnPropertyChanged(nameof(CanGoNext));
                         OnPropertyChanged(nameof(CurrentPage));
                     }
-                    // Если пользователь сказал "Нет", остаемся на шаге 5
                 }
                 else
                 {
@@ -171,14 +170,13 @@ namespace CarConfigurator
                 $"Спасибо за заявку! С вами свяжется наш менеджер в течение 24 часов.",
                 "Заявка оформлена",
                 MessageBoxButton.OK,
-                MessageBoxImage.Information);
+                MessageBoxImage.Error);
 
             Application.Current.Shutdown();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            // Проверяем, есть ли несохраненные данные на шаге 5
             if (_currentStep == 5 && !_config.IsStep5Valid())
             {
                 var result = MessageBox.Show(
@@ -189,7 +187,7 @@ namespace CarConfigurator
 
                 if (result != MessageBoxResult.Yes)
                 {
-                    e.Cancel = true; // Отменяем закрытие окна
+                    e.Cancel = true;
                 }
             }
         }

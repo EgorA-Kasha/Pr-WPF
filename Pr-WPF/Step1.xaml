@@ -8,7 +8,7 @@
 
     <StackPanel Margin="20">
         <TextBlock x:Name="titleText" 
-                   Text="Выберите модель автомобиля" 
+                   Text="*Выберите модель автомобиля" 
                    FontSize="16" FontWeight="SemiBold" 
                    Margin="0,0,0,10"/>
 
@@ -17,7 +17,7 @@
                   Margin="0,5,0,15" MinWidth="200"/>
 
         <TextBlock x:Name="subtitleText"
-                   Text="Выберите тип двигателя" 
+                   Text="*Выберите тип двигателя" 
                    FontSize="16" FontWeight="SemiBold" 
                    Margin="0,20,0,10"/>
 
