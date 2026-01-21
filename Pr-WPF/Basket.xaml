@@ -1,0 +1,35 @@
+﻿<Page x:Class="Pr_WPF.Basket"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pr_WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Basket">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Корзина покупок" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="20"/>
+
+            <!-- Простой список без DataTemplate -->
+            <ListBox x:Name="CartItemsList" 
+                 Height="300" 
+                 Margin="20">
+            </ListBox>
+
+            <TextBlock x:Name="TotalPriceText" 
+                   FontSize="18" 
+                   Margin="20"/>
+
+            <Button Content="Оформить заказ" 
+                Width="150" 
+                Height="40" 
+                Margin="20"
+               /> <!-- Click="OrderButton_Click"-->
+        </StackPanel>
+    </Grid>
+</Page>
