@@ -22,23 +22,23 @@ namespace Pr_WPF
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;
+            //Loaded += MainWindow_Loaded;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            BtnProducts_Click(null, null);
-        }
+        //private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    BtnProducts_Click(null, null);
+        //}
 
-        public void BtnProducts_Click(object sender, RoutedEventArgs e)
+        public void BtnProduct_Click(object sender, RoutedEventArgs e)
         {
-            var page = new ProductsPage();
+            var page = new Tovari();
             MainFrame.Navigate(page);
         }
 
         public void BtnCart_Click(object sender, RoutedEventArgs e)
         {
-            var page = new CartPage();
+            var page = new Basket();
             MainFrame.Navigate(page);
         }
 
@@ -49,7 +49,7 @@ namespace Pr_WPF
                 MessageBox.Show("Корзина пуста!");
                 return;
             }
-            var page = new OrderPage();
+            var page = new ZakaZ();
             MainFrame.Navigate(page);
         }
     }
@@ -93,7 +93,7 @@ namespace Pr_WPF
 
     public static class Database
     {
-        private static string connectionString = ConfigurationManager.ConnectionStrings["ShopConnection"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         public static List<Product> GetProducts()
         {

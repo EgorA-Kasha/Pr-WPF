@@ -10,26 +10,13 @@
 
     <Grid>
         <StackPanel>
-            <TextBlock Text="Корзина покупок" 
-                   FontSize="24" 
-                   FontWeight="Bold" 
-                   Margin="20"/>
+            <TextBlock Text="Корзина покупок" FontSize="24" FontWeight="Bold" Margin="20"/>
 
-            <!-- Простой список без DataTemplate -->
-            <ListBox x:Name="CartItemsList" 
-                 Height="300" 
-                 Margin="20">
-            </ListBox>
+            <ListBox x:Name="CartItemsList" Height="300" Margin="20"></ListBox>
 
-            <TextBlock x:Name="TotalPriceText" 
-                   FontSize="18" 
-                   Margin="20"/>
+            <TextBlock x:Name="TotalPriceText" FontSize="18" Margin="20"/>
 
-            <Button Content="Оформить заказ" 
-                Width="150" 
-                Height="40" 
-                Margin="20"
-               /> <!-- Click="OrderButton_Click"-->
+            <Button Content="Оформить заказ" Width="150" Height="40" Click="OrderButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

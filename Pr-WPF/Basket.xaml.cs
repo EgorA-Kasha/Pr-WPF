@@ -29,17 +29,14 @@ namespace Pr_WPF
 
         private void UpdateCartDisplay()
         {
-            // Очищаем список
             CartItemsList.Items.Clear();
             
-            // Добавляем товары простым текстом
             foreach (var item in Cart.Items)
             {
                 string itemText = $"{item.Product.Name} x{item.Quantity} - {item.Product.Price * item.Quantity:C}";
                 CartItemsList.Items.Add(itemText);
             }
             
-            // Общая сумма
             TotalPriceText.Text = $"Итого: {Cart.GetTotalPrice():C}";
         }
 

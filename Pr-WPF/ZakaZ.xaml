@@ -9,31 +9,27 @@
       Title="ZakaZ">
 
     <Grid>
-        <ScrollViewer>
-            <StackPanel Margin="20">
-                <TextBlock Text="Оформление заказа" 
+
+        <StackPanel Margin="20">
+            <TextBlock Text="Оформление заказа" 
                        FontSize="20" 
                        FontWeight="Bold" 
                        Margin="0,0,0,20"/>
 
-                <TextBlock Text="ФИО:"/>
-                <TextBox x:Name="txtFullName" Height="25" Margin="0,5,0,10"/>
+            <TextBlock Text="ФИО:"/>
+            <TextBox x:Name="txtFullName" Height="25" Margin="0,5,0,10"/>
 
-                <TextBlock Text="Email:"/>
-                <TextBox x:Name="txtEmail" Height="25" Margin="0,5,0,10"/>
+            <TextBlock Text="Email:"/>
+            <TextBox x:Name="txtEmail" Height="25" Margin="0,5,0,10"/>
 
-                <TextBlock Text="Адрес доставки:"/>
-                <TextBox x:Name="txtAddress" Height="60" Margin="0,5,0,20" AcceptsReturn="True"/>
+            <TextBlock Text="Адрес доставки:"/>
+            <TextBox x:Name="txtAddress" Height="60" Margin="0,5,0,20" AcceptsReturn="True"/>
 
-                <TextBlock x:Name="OrderSummaryText" 
+            <TextBlock x:Name="OrderSummaryText" 
                        Margin="0,0,0,20" 
                        TextWrapping="Wrap"/>
-
-                <Button Content="Заказать" 
-                    Width="150" 
-                    Height="30"
-                    /><!--Click="OrderButton_Click"-->
-            </StackPanel>
-        </ScrollViewer>
+            <Button Content="Заказать" Width="150" Height="30" Click="OrderButton_Click"/>
+            <!---->
+        </StackPanel>
     </Grid>
 </Page>

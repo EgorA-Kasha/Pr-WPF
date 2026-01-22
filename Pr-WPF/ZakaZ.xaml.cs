@@ -58,7 +58,7 @@ namespace Pr_WPF
                 Cart.Clear();
 
                 var mainWindow = (MainWindow)Application.Current.MainWindow;
-                mainWindow.BtnProducts_Click(null, null);
+                mainWindow.BtnProduct_Click(null, null);
             }
             catch (System.Exception ex)
             {
