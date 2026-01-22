@@ -16,20 +16,18 @@ using System.Windows.Shapes;
 namespace Pr_WPF
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        public MainWindow()
+        public MainPage()
         {
-            mein_window = this;
             InitializeComponent();
         }
 
-        public static MainWindow mein_window;
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void DrawPage(object sender, RoutedEventArgs e)
         {
-            
+            MainWindow.mein_window.MainFrame.Navigate(new DrawingPage());
         }
     }
 }

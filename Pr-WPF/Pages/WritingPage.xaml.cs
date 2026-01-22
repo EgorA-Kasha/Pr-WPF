@@ -16,20 +16,13 @@ using System.Windows.Shapes;
 namespace Pr_WPF
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для WritingPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WritingPage : Page
     {
-        public MainWindow()
+        public WritingPage()
         {
-            mein_window = this;
             InitializeComponent();
-        }
-
-        public static MainWindow mein_window;
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

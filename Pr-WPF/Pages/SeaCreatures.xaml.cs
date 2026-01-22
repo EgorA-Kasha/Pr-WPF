@@ -16,20 +16,13 @@ using System.Windows.Shapes;
 namespace Pr_WPF
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для SeaCreatures.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SeaCreatures : Page
     {
-        public MainWindow()
+        public SeaCreatures()
         {
-            mein_window = this;
             InitializeComponent();
-        }
-
-        public static MainWindow mein_window;
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }
