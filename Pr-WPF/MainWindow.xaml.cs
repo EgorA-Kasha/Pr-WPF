@@ -22,13 +22,7 @@ namespace Pr_WPF
         public MainWindow()
         {
             InitializeComponent();
-            //Loaded += MainWindow_Loaded;
         }
-
-        //private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    BtnProducts_Click(null, null);
-        //}
 
         public void BtnProduct_Click(object sender, RoutedEventArgs e)
         {
@@ -59,6 +53,7 @@ namespace Pr_WPF
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
+        public string ImagePath { get; set; }
     }
 
     public class CartItem
@@ -67,7 +62,7 @@ namespace Pr_WPF
         public int Quantity { get; set; }
     }
 
-    public static class Cart
+    public class Cart
     {
         public static List<CartItem> Items { get; } = new List<CartItem>();
 
@@ -102,7 +97,7 @@ namespace Pr_WPF
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var command = new SqlCommand("SELECT Id, Name, Price FROM Products", connection);
+                var command = new SqlCommand("SELECT Id, Name, Price, ImagePath FROM Products", connection);
 
                 using (var reader = command.ExecuteReader())
                 {
@@ -112,7 +107,8 @@ namespace Pr_WPF
                         {
                             Id = (int)reader["Id"],
                             Name = (string)reader["Name"],
-                            Price = (decimal)reader["Price"]
+                            Price = (decimal)reader["Price"],
+                            ImagePath = (string)reader["ImagePath"]
                         });
                     }
                 }

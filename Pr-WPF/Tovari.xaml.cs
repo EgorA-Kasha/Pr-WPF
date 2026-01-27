@@ -21,6 +21,7 @@ namespace Pr_WPF
         {
             InitializeComponent();
             Loaded += Tovari_Loaded;
+            ProductsListBox.SelectionChanged += ProductsListBox_SelectionChanged;
         }
 
         private void Tovari_Loaded(object sender, RoutedEventArgs e)
@@ -29,12 +30,22 @@ namespace Pr_WPF
             ProductsListBox.ItemsSource = products;
         }
 
+        private void ProductsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AddToCartButton.IsEnabled = ProductsListBox.SelectedItem != null;
+        }
+
         private void AddToCart_Click(object sender, RoutedEventArgs e)
         {
-            var button = (Button)sender;
-            var product = (Product)button.DataContext;
-            Cart.AddProduct(product);
-            MessageBox.Show($"Товар \"{product.Name}\" добавлен в корзину!");
+            var selectedProduct = ProductsListBox.SelectedItem as Product;
+            if (selectedProduct != null)
+            {
+                Cart.AddProduct(selectedProduct);
+                MessageBox.Show($"Товар \"{selectedProduct.Name}\" добавлен в корзину!");
+
+                ProductsListBox.SelectedItem = null;
+                AddToCartButton.IsEnabled = false;
+            }
         }
     }
 }

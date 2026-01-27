@@ -9,38 +9,51 @@
       Title="Tovari">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <ListBox x:Name="ProductsListBox">
+        <ListBox x:Name="ProductsListBox" Grid.Row="0" SelectionMode="Single">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="LightGray" BorderThickness="1" Margin="10" Padding="10" Width="732">
-                        <StackPanel Orientation="Vertical">
-                            <Image Width="100" Height="100">
-                                <Image.Style>
-                                    <Style TargetType="Image">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Id}" Value="1">
-                                                <Setter Property="Source" Value="Images/Шаурма.jpg"/>
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Id}" Value="2">
-                                                <Setter Property="Source" Value="Images/Кола.jpg"/>
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Id}" Value="3">
-                                                <Setter Property="Source" Value="Images/Телец.jpg"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                    <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="0,5" TextAlignment="Center"/>
-                            <TextBlock Text="{Binding Price, StringFormat='Цена: {0} з.с.'}" Margin="0,5" TextAlignment="Center"/>
+                            <Image Source="{Binding ImagePath}" 
+                                   Grid.Column="0"
+                                   Width="150" 
+                                   Height="150"
+                                   Margin="0,0,20,0"/>
 
-                            <Button Content="Добавить в корзину" Width="120" Margin="0,5" Click="AddToCart_Click"/>
-                        </StackPanel>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Name}" 
+                                           FontSize="24" 
+                                           FontWeight="Bold"
+                                           Margin="0,0,0,10"/>
+
+                                <TextBlock Text="{Binding Price, StringFormat='Цена: {0} з.с.'}" 
+                                           FontSize="18"
+                                           Foreground="Green"/>
+                            </StackPanel>
+                        </Grid>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <Border Grid.Row="1" Background="LightGray" Padding="10">
+            <Button x:Name="AddToCartButton"
+                    Content="Добавить товар в корзину"
+                    Width="225"
+                    Height="40"
+                    FontSize="16"
+                    Click="AddToCart_Click"
+                    IsEnabled="False"/>
+        </Border>
     </Grid>
 </Page>

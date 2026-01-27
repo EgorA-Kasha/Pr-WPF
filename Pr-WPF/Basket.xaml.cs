@@ -20,39 +20,33 @@ namespace Pr_WPF
         public Basket()
         {
             InitializeComponent();
+            Loaded += Page_Loaded;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateCartDisplay();
-        }
-
-        private void UpdateCartDisplay()
-        {
-            CartItemsList.Items.Clear();
-            
-            foreach (var item in Cart.Items)
+            if (Cart.Items == null || Cart.Items.Count == 0)
             {
-                string itemText = $"{item.Product.Name} x{item.Quantity} - {item.Product.Price * item.Quantity:C}";
-                CartItemsList.Items.Add(itemText);
+                CartGrid.Visibility = Visibility.Collapsed;
+                TotalPriceText.Text = "Корзина пуста";
             }
-            
-            TotalPriceText.Text = $"Итого: {Cart.GetTotalPrice():C}";
+            else
+            {
+                CartGrid.Visibility = Visibility.Visible;
+                CartItemsControl.ItemsSource = Cart.Items;
+            }
         }
 
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Cart.Items.Count == 0)
+            if (Cart.Items == null || Cart.Items.Count == 0)
             {
                 MessageBox.Show("Корзина пуста!");
                 return;
             }
-            
+
             var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null)
-            {
-                mainWindow.BtnOrder_Click(null, null);
-            }
+            mainWindow?.BtnOrder_Click(null, null);
         }
     }
 }

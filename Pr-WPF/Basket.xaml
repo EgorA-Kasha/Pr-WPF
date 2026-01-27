@@ -8,15 +8,47 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Basket">
 
-    <Grid>
-        <StackPanel>
-            <TextBlock Text="Корзина покупок" FontSize="24" FontWeight="Bold" Margin="20"/>
+    <StackPanel Margin="20">
+        <TextBlock Text="Корзина покупок" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,20"/>
 
-            <ListBox x:Name="CartItemsList" Height="300" Margin="20"></ListBox>
+        <!-- Grid для табличного отображения -->
+        <Grid x:Name="CartGrid" Margin="0,0,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-            <TextBlock x:Name="TotalPriceText" FontSize="18" Margin="20"/>
+            <!-- Заголовок таблицы -->
+            <TextBlock Grid.Row="0" 
+                       Text="Товары в заказе:" 
+                       FontWeight="Bold"
+                       Margin="0,0,0,10"/>
 
-            <Button Content="Оформить заказ" Width="150" Height="40" Click="OrderButton_Click"/>
-        </StackPanel>
-    </Grid>
+            <!-- Список товаров -->
+            <ItemsControl Grid.Row="1" x:Name="CartItemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,2">
+                            <TextBlock Text="{Binding Product.Name}" Width="150"/>
+                            <TextBlock Text=" x " Margin="5,0"/>
+                            <TextBlock Text="{Binding Quantity}" Width="30"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
+        <TextBlock x:Name="TotalPriceText" 
+                   FontSize="18" 
+                   FontWeight="Bold"
+                   Margin="0,0,0,20"/>
+
+        <Button Content="Оформить заказ" 
+                Width="200" 
+                Height="40" 
+                Click="OrderButton_Click"/>
+    </StackPanel>
 </Page>
