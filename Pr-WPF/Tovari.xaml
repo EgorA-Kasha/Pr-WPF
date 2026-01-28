@@ -17,7 +17,7 @@
         <ListBox x:Name="ProductsListBox" Grid.Row="0" SelectionMode="Single">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="10">
+                    <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="10" Width="750">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -36,9 +36,7 @@
                                            FontWeight="Bold"
                                            Margin="0,0,0,10"/>
 
-                                <TextBlock Text="{Binding Price, StringFormat='Цена: {0} з.с.'}" 
-                                           FontSize="18"
-                                           Foreground="Green"/>
+                                <TextBlock Text="{Binding Price, StringFormat='Цена: {0} з.с.'}"/>
                             </StackPanel>
                         </Grid>
                     </Border>
