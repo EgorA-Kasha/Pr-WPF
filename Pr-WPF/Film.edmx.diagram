@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2905505d51594ec4816621d5eb72a4cf" Name="Diagram1">
+        <EntityTypeShape EntityType="ХОЗМАГModel.Movie" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХОЗМАГModel.Room" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХОЗМАГModel.Screening" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХОЗМАГModel.SeatTaken" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХОЗМАГModel.Ticket" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХОЗМАГModel.User" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="ХОЗМАГModel.FK_Screening_Movie" ManuallyRouted="false" />
+        <AssociationConnector Association="ХОЗМАГModel.FK_Screening_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="ХОЗМАГModel.FK_SeatTaken_Screening" ManuallyRouted="false" />
+        <AssociationConnector Association="ХОЗМАГModel.FK_Ticket_Screening" ManuallyRouted="false" />
+        <AssociationConnector Association="ХОЗМАГModel.FK_Ticket_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

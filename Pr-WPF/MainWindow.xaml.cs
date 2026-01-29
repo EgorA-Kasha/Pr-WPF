@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pr_WPF.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,29 @@ namespace Pr_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow main_window;
         public MainWindow()
         {
             InitializeComponent();
+            main_window = this;
+            navigate_to(null);
+        }
+        public void navigate_to(object page = null)
+        {
+            if (page != null)
+            {
+                main_window.MainFrame.Navigate(page);
+                button_to_homepage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                main_window.MainFrame.Navigate(new HomePage());
+                button_to_homepage.Visibility = Visibility.Collapsed;
+            }
+        }
+        private void button_to_homepage_Click(object sender, RoutedEventArgs e)
+        {
+            navigate_to(null);
         }
     }
 }

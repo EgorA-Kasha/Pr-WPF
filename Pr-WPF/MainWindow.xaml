@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pr_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Кинотеатр 'Прага'" Height="450" Width="800">
     <Grid>
-        
+        <Rectangle HorizontalAlignment="Center" Height="23" Stroke="Black" VerticalAlignment="Top" Width="800" Fill="LightGray"/>
+        <Button x:Name="button_to_homepage" Height="23" Content="🏚" VerticalAlignment="Top" Margin="661,0,48,0" BorderBrush="Black"/>
+        <Frame x:Name="MainFrame" Source="Pages/HomePage.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
