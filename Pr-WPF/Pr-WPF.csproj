@@ -82,8 +82,17 @@
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MovieDetails.xaml.cs">
+      <DependentUpon>MovieDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Movies.xaml.cs">
       <DependentUpon>Movies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Ordering.xaml.cs">
+      <DependentUpon>Ordering.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ScreeningDetails.xaml.cs">
+      <DependentUpon>ScreeningDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
@@ -137,7 +146,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MovieDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Movies.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Ordering.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ScreeningDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

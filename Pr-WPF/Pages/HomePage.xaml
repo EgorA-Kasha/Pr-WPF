@@ -10,7 +10,7 @@
 
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Button x:Name="button_to_logreg" Width="135" Height="34" Content="Регистрация/Вход" Margin="50 50 50 50" Click="button_to_logreg_Click"/>
+            <Button x:Name="button_to_logreg" Width="135" Height="34" Content="Регистрация/Вход" Margin="50 150 50 0" Click="button_to_logreg_Click"/>
             <Button x:Name="button_to_movies" Width="135" Height="34" Content="К показам" Click="button_to_movies_Click" />
             <Button x:Name="button_to_userpage" Width="135" Height="34" Content="Профиль" Click="button_to_userpage_Click"/>
         </StackPanel>

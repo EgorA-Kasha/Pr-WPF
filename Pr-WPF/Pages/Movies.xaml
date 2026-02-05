@@ -9,6 +9,33 @@
       Title="Movies">
 
     <Grid>
-        
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Center">
+                <TextBlock Width="105" Text="Название фильма: "></TextBlock> 
+                <TextBox x:Name="tb_filter" Width="300" Height="20" TextChanged="tb_filter_TextChanged"/>
+                           
+            </StackPanel>
+            <TextBlock Text="Сортировать по имени (так)/по социальному рейтингу (нет)"/>
+            <CheckBox x:Name="cb_sort_by_name" Click="cb_sort_by_name_Checked"/>
+            <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lb_movies">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Margin="3" Text="{Binding title}"/>
+                            <TextBlock Margin="3" Text="{Binding rating}"/>
+                            <TextBlock Margin="3" Text="{Binding first_aired}"/>
+                            <TextBlock Margin="3" Text="{Binding age_restr}"/>
+                            <Image Source="{Binding cover_art_path}" Width="100" Height="100" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button x:Name="b_next" Width="160" Height="40" Content="Просмотреть сеансы" VerticalAlignment="Bottom" Click="button_next_Click" />
+        </StackPanel>
     </Grid>
 </Page>
