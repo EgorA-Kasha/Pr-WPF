@@ -25,7 +25,7 @@ namespace Pr_WPF.Pages
             InitializeComponent();
             if (Global.LoggedInAs == null)
             {
-                tb_userdata.Text = "Ты что здесь делаешь?\n\nЭта страница только для крутых\n\n\n\n\n\n(Войдите или зарегестрируйтесь, чтобы увидеть инфу)";
+                tb_userdata.Text = "\n\n\n\n\n\n\n\nВойдите или зарегестрируйтесь, чтобы увидеть инфу";
             }
             else
             {

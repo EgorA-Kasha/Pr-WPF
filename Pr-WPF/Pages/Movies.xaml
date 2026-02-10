@@ -11,12 +11,13 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Center">
-                <TextBlock Width="105" Text="Название фильма: "></TextBlock> 
+                <TextBlock Width="105" Text="Название фильма: "></TextBlock>
                 <TextBox x:Name="tb_filter" Width="300" Height="20" TextChanged="tb_filter_TextChanged"/>
-                           
+
             </StackPanel>
-            <TextBlock Text="Сортировать по имени (так)/по социальному рейтингу (нет)"/>
-            <CheckBox x:Name="cb_sort_by_name" Click="cb_sort_by_name_Checked"/>
+            <CheckBox x:Name="cb_sort_by_name" Click="cb_sort_by_name_Checked" Margin="0 5 0 0">
+                <TextBlock Text="Сортировать по рейтингу (по умолчанию)/по названию"/>
+            </CheckBox>
             <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lb_movies">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -30,7 +31,7 @@
                             <TextBlock Margin="3" Text="{Binding rating}"/>
                             <TextBlock Margin="3" Text="{Binding first_aired}"/>
                             <TextBlock Margin="3" Text="{Binding age_restr}"/>
-                            <Image Source="{Binding cover_art_path}" Width="100" Height="100" />
+                            <Image Source="{Binding cover_art_path}" Width="200" Height="200" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

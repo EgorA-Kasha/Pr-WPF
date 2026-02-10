@@ -8,7 +8,7 @@
         Title="Кинотеатр 'Прага'" Height="450" Width="800">
     <Grid>
         <Rectangle HorizontalAlignment="Center" Height="30" Stroke="Black" VerticalAlignment="Top" Width="800" Fill="LightGray"/>
-        <Button x:Name="button_to_homepage" Height="30" Content="🏚" VerticalAlignment="Top" Margin="661,0,48,0" BorderBrush="Black"/>
+        <Button x:Name="button_to_homepage" Height="30" Content="🏚" VerticalAlignment="Top" Margin="661,0,48,0" BorderBrush="Black" Click="button_to_homepage_Click"/>
         <Frame x:Name="MainFrame" Source="Pages/HomePage.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

@@ -10,7 +10,7 @@
 
     <Grid>
         <StackPanel Orientation="Vertical" Height="420" VerticalAlignment="Top" Margin="0 30 0 0">
-            <TextBlock Text="Логин" Margin="200 0 0 100"/>
+            <TextBlock Text="Логин" Margin="200 120 0 0"/>
             <TextBox x:Name="tb_login" Height="20" Width="400"/>
             <TextBlock Text="Пароль" Margin="200 0 0 0"/>
             <TextBox x:Name="tb_passwd" Height="20" Width="400"/>

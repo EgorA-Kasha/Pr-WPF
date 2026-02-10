@@ -23,6 +23,26 @@ namespace Pr_WPF.Pages
         public Ordering()
         {
             InitializeComponent();
+            lb_ticket.Items.Add(new
+            {
+                movie = Global.MovieSelected,
+                screening = Global.ScreeningSelected.sc,
+                seat = Global.SeatSelected,
+                price = Global.price
+            });
+        }
+
+        private void button_order_Click(object sender, RoutedEventArgs e)
+        {
+            Global.db.Ticket.Add(new Ticket
+            {
+                user = Global.LoggedInAs.Value,
+                screening = Global.ScreeningSelected.sc.id,
+                seat = Global.SeatSelected.Value,
+                price = Global.price
+            });
+            Global.db.SaveChanges();
+            MainWindow.main_window.navigate_to(new HomePage());
         }
     }
 }

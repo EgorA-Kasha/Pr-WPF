@@ -13,10 +13,10 @@ namespace Pr_WPF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ХОЗМАГEntities : DbContext
+    public partial class ХОЗМАГEntities1 : DbContext
     {
-        public ХОЗМАГEntities()
-            : base("name=ХОЗМАГEntities")
+        public ХОЗМАГEntities1()
+            : base("name=ХОЗМАГEntities1")
         {
         }
     
@@ -28,7 +28,6 @@ namespace Pr_WPF
         public virtual DbSet<Movie> Movie { get; set; }
         public virtual DbSet<Room> Room { get; set; }
         public virtual DbSet<Screening> Screening { get; set; }
-        public virtual DbSet<SeatTaken> SeatTaken { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
         public virtual DbSet<User> User { get; set; }
     }

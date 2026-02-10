@@ -17,7 +17,6 @@ namespace Pr_WPF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Screening()
         {
-            this.SeatTaken = new HashSet<SeatTaken>();
             this.Ticket = new HashSet<Ticket>();
         }
     
@@ -28,8 +27,6 @@ namespace Pr_WPF
     
         public virtual Movie Movie1 { get; set; }
         public virtual Room Room1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SeatTaken> SeatTaken { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Ticket { get; set; }
     }

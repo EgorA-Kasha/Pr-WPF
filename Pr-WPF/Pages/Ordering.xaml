@@ -9,6 +9,27 @@
       Title="Ordering">
 
     <Grid>
-        
+        <StackPanel Orientation="Vertical">
+            <TextBlock x:Name="tb_userdata" Width="300" Height="40" />
+            <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lb_ticket">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Margin="3" Text="{Binding movie.name}"/>
+                            <TextBlock Margin="3" Text="{Binding screening.room}"/>
+                            <TextBlock Margin="3" Text="{Binding screening.datetime}"/>
+                            <TextBlock Margin="3" Text="{Binding seat}"/>
+                            <TextBlock Margin="3" Text="{Binding price}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button x:Name="button_order" Content="Заказать" Click="button_order_Click" />
+        </StackPanel>
     </Grid>
 </Page>

@@ -35,14 +35,6 @@
           <Property Name="datetime" Type="datetime" Nullable="false" />
           <Property Name="movie" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="SeatTaken">
-          <Key>
-            <PropertyRef Name="screening" />
-            <PropertyRef Name="seat" />
-          </Key>
-          <Property Name="screening" Type="int" Nullable="false" />
-          <Property Name="seat" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Ticket">
           <Key>
             <PropertyRef Name="id" />
@@ -85,18 +77,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SeatTaken_Screening">
-          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
-          <End Role="SeatTaken" Type="Self.SeatTaken" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Screening">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="SeatTaken">
-              <PropertyRef Name="screening" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Ticket_Screening">
           <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
@@ -125,7 +105,6 @@
           <EntitySet Name="Movie" EntityType="Self.Movie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Screening" EntityType="Self.Screening" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SeatTaken" EntityType="Self.SeatTaken" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Screening_Movie" Association="Self.FK_Screening_Movie">
@@ -135,10 +114,6 @@
           <AssociationSet Name="FK_Screening_Room" Association="Self.FK_Screening_Room">
             <End Role="Room" EntitySet="Room" />
             <End Role="Screening" EntitySet="Screening" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SeatTaken_Screening" Association="Self.FK_SeatTaken_Screening">
-            <End Role="Screening" EntitySet="Screening" />
-            <End Role="SeatTaken" EntitySet="SeatTaken" />
           </AssociationSet>
           <AssociationSet Name="FK_Ticket_Screening" Association="Self.FK_Ticket_Screening">
             <End Role="Screening" EntitySet="Screening" />
@@ -187,17 +162,7 @@
           <Property Name="movie" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Movie1" Relationship="Self.FK_Screening_Movie" FromRole="Screening" ToRole="Movie" />
           <NavigationProperty Name="Room1" Relationship="Self.FK_Screening_Room" FromRole="Screening" ToRole="Room" />
-          <NavigationProperty Name="SeatTaken" Relationship="Self.FK_SeatTaken_Screening" FromRole="Screening" ToRole="SeatTaken" />
           <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_Screening" FromRole="Screening" ToRole="Ticket" />
-        </EntityType>
-        <EntityType Name="SeatTaken">
-          <Key>
-            <PropertyRef Name="screening" />
-            <PropertyRef Name="seat" />
-          </Key>
-          <Property Name="screening" Type="Int32" Nullable="false" />
-          <Property Name="seat" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Screening1" Relationship="Self.FK_SeatTaken_Screening" FromRole="SeatTaken" ToRole="Screening" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -244,18 +209,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SeatTaken_Screening">
-          <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
-          <End Role="SeatTaken" Type="Self.SeatTaken" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Screening">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="SeatTaken">
-              <PropertyRef Name="screening" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Ticket_Screening">
           <End Role="Screening" Type="Self.Screening" Multiplicity="1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
@@ -280,11 +233,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ХОЗМАГEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ХОЗМАГEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Movie" EntityType="Self.Movie" />
           <EntitySet Name="Room" EntityType="Self.Room" />
           <EntitySet Name="Screening" EntityType="Self.Screening" />
-          <EntitySet Name="SeatTaken" EntityType="Self.SeatTaken" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" />
           <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK_Screening_Movie" Association="Self.FK_Screening_Movie">
@@ -294,10 +246,6 @@
           <AssociationSet Name="FK_Screening_Room" Association="Self.FK_Screening_Room">
             <End Role="Room" EntitySet="Room" />
             <End Role="Screening" EntitySet="Screening" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SeatTaken_Screening" Association="Self.FK_SeatTaken_Screening">
-            <End Role="Screening" EntitySet="Screening" />
-            <End Role="SeatTaken" EntitySet="SeatTaken" />
           </AssociationSet>
           <AssociationSet Name="FK_Ticket_Screening" Association="Self.FK_Ticket_Screening">
             <End Role="Screening" EntitySet="Screening" />
@@ -313,7 +261,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ХОЗМАГModelContainer" CdmEntityContainer="ХОЗМАГEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ХОЗМАГModelContainer" CdmEntityContainer="ХОЗМАГEntities1">
           <EntitySetMapping Name="Movie">
             <EntityTypeMapping TypeName="ХОЗМАГModel.Movie">
               <MappingFragment StoreEntitySet="Movie">
@@ -344,14 +292,6 @@
                 <ScalarProperty Name="room" ColumnName="room" />
                 <ScalarProperty Name="datetime" ColumnName="datetime" />
                 <ScalarProperty Name="movie" ColumnName="movie" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SeatTaken">
-            <EntityTypeMapping TypeName="ХОЗМАГModel.SeatTaken">
-              <MappingFragment StoreEntitySet="SeatTaken">
-                <ScalarProperty Name="screening" ColumnName="screening" />
-                <ScalarProperty Name="seat" ColumnName="seat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
