@@ -24,8 +24,11 @@
                             <TextBlock Margin="3" Text="{Binding movie.name}"/>
                             <TextBlock Margin="3" Text="Номер зала:"/>
                             <TextBlock Margin="3" Text="{Binding screening.room}"/>
+                            <TextBlock Margin="3" Text="Дата показа:"/>
                             <TextBlock Margin="3" Text="{Binding screening.datetime}"/>
+                            <TextBlock Margin="3" Text="Места:"/>
                             <TextBlock Margin="3" Text="{Binding seat}"/>
+                            <TextBlock Margin="3" Text="Цена:"/>
                             <TextBlock Margin="3" Text="{Binding price}"/>
                         </StackPanel>
                     </DataTemplate>
