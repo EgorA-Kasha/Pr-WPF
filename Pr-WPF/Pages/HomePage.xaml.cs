@@ -34,9 +34,13 @@ namespace Pr_WPF.Pages
         {
             MainWindow.main_window.navigate_to(new UserPage());
         }
-        private void button_to_logreg_Click(object sender, RoutedEventArgs e)
+        private void button_to_log_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.main_window.navigate_to(new Login());
+        }
+        private void button_to_reg_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.main_window.navigate_to(new Reg());
         }
     }
 }

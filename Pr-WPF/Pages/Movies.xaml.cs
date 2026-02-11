@@ -45,5 +45,11 @@ namespace Pr_WPF.Pages
             Global.MovieSelected = lb_movies.SelectedValue as Movie;
             MainWindow.main_window.navigate_to(new MovieDetails());
         }
+
+        private void lb_movies_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            //Global.MovieSelected = lb_movies.SelectedValue as Movie;
+            //MainWindow.main_window.navigate_to(new MovieDetails());
+        }
     }
 }

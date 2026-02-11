@@ -29,7 +29,16 @@ namespace Pr_WPF.Pages
             }
             else
             {
-                tb_userdata.Text = "Вы " + (from x in Global.db.User where x.id == Global.LoggedInAs select x).First().login;
+                tb_userdata.Text = "Вы "
+                + (from x in Global.db.User where x.id == Global.LoggedInAs select x).First().login;
+                lb_tickets.ItemsSource = (
+                    from x in Global.db.User
+                    where x.id == Global.LoggedInAs
+                    join y in Global.db.Ticket on x.id equals y.user
+                    join z in Global.db.Screening on y.screening equals z.id
+                    join w in Global.db.Movie on z.movie equals w.id
+                    select new { screening = z, movie = w }
+                ).ToList();
             }
         }
     }

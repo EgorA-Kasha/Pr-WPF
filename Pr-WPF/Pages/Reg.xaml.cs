@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Pr_WPF.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Login.xaml
+    /// Логика взаимодействия для Reg.xaml
     /// </summary>
-    public partial class Login : Page
+    public partial class Reg : Page
     {
-        public Login()
+        public Reg()
         {
             InitializeComponent();
         }
@@ -28,22 +28,15 @@ namespace Pr_WPF.Pages
         private void button_log_reg_Click(object sender, RoutedEventArgs e)
         {
             var users = from x in Global.db.User where x.login == tb_login.Text select x;
-            if (users.Count() == 0)
-            {
-                MessageBox.Show("Такого пользователя не существует!");
-                return;
-            }
-            var u = users.First();
-            if (u.passwd != tb_passwd.Text)
-            {
-                MessageBox.Show("Неверный пароль!");
-                return;
-            }
-            else
-            {
-                Global.LoggedInAs = u.id;
-                MainWindow.main_window.navigate_to(new UserPage());
-            }
+            if (users.Count() != 0)
+                MessageBox.Show("Такой юзер уже есть");
+            var u = new User();
+            u.login = tb_login.Text;
+            u.passwd = tb_passwd.Text;
+            Global.db.User.Add(u);
+            Global.db.SaveChanges();
+            Global.LoggedInAs = (from x in Global.db.User where x.login == tb_login.Text select x.id).First();
+            MainWindow.main_window.navigate_to(new UserPage());
         }
     }
 }

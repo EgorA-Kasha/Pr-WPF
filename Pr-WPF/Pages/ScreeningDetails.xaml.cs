@@ -35,7 +35,6 @@ namespace Pr_WPF.Pages
         {
             var taken = from x in Global.db.Ticket where x.screening == Global.ScreeningSelected.sc.id select x.seat;
             var total = Global.ScreeningSelected.room.seats;
-            //(from x in Global.db.Room where x.id == Global.ScreeningDetails.room.id select x.seats).First();
             var free = new List<int>();
             for (int nr = 1; nr <= total; nr++)
                 if (!taken.Contains(nr) || cb_hide_taken.IsChecked == false)

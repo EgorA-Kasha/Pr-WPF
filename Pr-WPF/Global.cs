@@ -9,7 +9,7 @@ namespace Pr_WPF
 {
     internal class Global
     {
-        public static ХОЗМАГEntities1 db = new ХОЗМАГEntities1();
+        public static ХОЗМАГEntities db = new ХОЗМАГEntities();
         public static int? LoggedInAs = null;
         public static Movie MovieSelected = null;
         public static MovieDetails.T ScreeningSelected = null;
