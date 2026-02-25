@@ -1,0 +1,17 @@
+﻿<Page x:Class="Pr_WPF.Pages.CompletedBuilds"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pr_WPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CompletedBuilds">
+
+    <Grid>
+        <Button Content="Назад" HorizontalAlignment="Left" Margin="602,359,0,0" VerticalAlignment="Top" Height="40" Width="80" Click="Button_Click_Back"/>
+        <Button Content="Выбрать" HorizontalAlignment="Left" Margin="710,359,0,0" VerticalAlignment="Top" Height="40" Width="80"/>
+        <TextBlock HorizontalAlignment="Left" Margin="133,107,0,0" TextWrapping="Wrap" Text="Выберите готовые сборки из списка ниже:" VerticalAlignment="Top" Width="254"/>
+        
+    </Grid>
+</Page>

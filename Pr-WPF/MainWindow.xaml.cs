@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Pr_WPF.Pages;
 
 namespace Pr_WPF
 {
@@ -20,9 +21,19 @@ namespace Pr_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
+        public static MainWindow main_window;
+        public MainWindow() {
             InitializeComponent();
+            main_window = this;
+            navigate_to(null);
         }
+        public void navigate_to(object page = null) {
+            if (page != null) {
+                main_window.MainFrame.Navigate(page);
+            } else {
+                main_window.MainFrame.Navigate(new HomePage());
+            }
+        }
+
     }
 }
