@@ -8,10 +8,45 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CompletedBuilds">
 
-    <Grid>
-        <Button Content="Назад" HorizontalAlignment="Left" Margin="602,359,0,0" VerticalAlignment="Top" Height="40" Width="80" Click="Button_Click_Back"/>
-        <Button Content="Выбрать" HorizontalAlignment="Left" Margin="710,359,0,0" VerticalAlignment="Top" Height="40" Width="80"/>
-        <TextBlock HorizontalAlignment="Left" Margin="133,107,0,0" TextWrapping="Wrap" Text="Выберите готовые сборки из списка ниже:" VerticalAlignment="Top" Width="254"/>
-        
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" Background="#2C3E50" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+            <TextBlock Text="Сохраненные сборки" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Список сборок -->
+        <ListView x:Name="lvAssemblies" Grid.Row="1" SelectionMode="Single" 
+                  MouseDoubleClick="lvAssemblies_MouseDoubleClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10" Margin="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Author}" Foreground="Gray"/>
+                                <TextBlock Text="{Binding PartsCount, StringFormat={}Деталей: {0}}" Margin="0,5,0,0"/>
+                                <TextBlock Text="{Binding TotalPrice, StringFormat={}Общая цена: {0:C}}" 
+                                           Foreground="Green" FontWeight="Bold"/>
+                            </StackPanel>
+
+                            <Button Grid.Column="1" Content="Загрузить" 
+                                    Tag="{Binding Id}" Click="LoadAssembly_Click"
+                                    Background="#3498DB" Foreground="White" 
+                                    BorderThickness="0" Padding="10,5" Margin="5"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

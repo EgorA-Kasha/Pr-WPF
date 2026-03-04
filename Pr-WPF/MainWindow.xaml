@@ -5,11 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pr_WPF"
         mc:Ignorable="d"
-        Title="СобериКомпухтер" Height="450" Width="800">
-    <Grid>
+        Title="СобериКомпухтер" Height="700" Width="1200">
 
-        
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Source="Pages/HomePage.xaml"/>
-        <Rectangle HorizontalAlignment="Center" Height="60" Margin="0,364,0,0" Stroke="Black" VerticalAlignment="Top" Width="800"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель навигации -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+            <Button x:Name="btnBuilder" Content="Конструктор" Width="150" Height="40" Margin="5" Click="btnBuilder_Click" FontSize="16"/>
+            <Button x:Name="btnSaved" Content="Сохраненные сборки" Width="150" Height="40" Margin="5" Click="btnSaved_Click" FontSize="16"/>
+        </StackPanel>
+
+        <!-- Контейнер для страниц -->
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
