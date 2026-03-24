@@ -21,19 +21,20 @@ namespace Pr_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static MainWindow main_window;
-        public MainWindow() {
+        public MainWindow()
+        {
             InitializeComponent();
-            main_window = this;
-            navigate_to(null);
-        }
-        public void navigate_to(object page = null) {
-            if (page != null) {
-                main_window.MainFrame.Navigate(page);
-            } else {
-                main_window.MainFrame.Navigate(new HomePage());
-            }
+            MainFrame.Navigate(new Pages.Assemblying());
         }
 
+        private void BtnAssemble_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.Assemblying());
+        }
+
+        private void BtnSaved_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.Assembled());
+        }
     }
 }

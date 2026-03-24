@@ -13,10 +13,10 @@ namespace Pr_WPF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class pcEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public pcEntities()
-            : base("name=pcEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -52,6 +52,7 @@ namespace Pr_WPF
         public virtual DbSet<storagedevice> storagedevice { get; set; }
         public virtual DbSet<storagedeviceinterface> storagedeviceinterface { get; set; }
         public virtual DbSet<storagedevicetype> storagedevicetype { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<videoconnector> videoconnector { get; set; }
         public virtual DbSet<videoconnectorgpu> videoconnectorgpu { get; set; }
     }

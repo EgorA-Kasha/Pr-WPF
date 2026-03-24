@@ -4,69 +4,70 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="59e98f85952c4e6f8314ccf2e3f88d38" Name="Diagram1">
-        <EntityTypeShape EntityType="pcModel.assembly" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.basepart" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.boardformfactorcase" Width="1.5" PointX="13.5" PointY="17.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.case" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.casesize" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.certificate" Width="1.5" PointX="6" PointY="30.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.cpu" Width="1.5" PointX="8.25" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.fandimension" Width="1.5" PointX="9" PointY="24.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.formfactor" Width="1.5" PointX="11.25" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.gpu" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.gpuinterface" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.hdd" Width="1.5" PointX="13.5" PointY="20.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.igpu" Width="1.5" PointX="6" PointY="24.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.manufacturer" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.memorytype" Width="1.5" PointX="9" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.motherboard" Width="1.5" PointX="5.25" PointY="20.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.partassembly" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.parttype" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.powersupply" Width="1.5" PointX="8.25" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.processorcooler" Width="1.5" PointX="11.25" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.ram" Width="1.5" PointX="11.25" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.socket" Width="1.5" PointX="6" PointY="27.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.socketprocessorcooler" Width="1.5" PointX="13.5" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.ssd" Width="1.5" PointX="13.5" PointY="22.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.storagedevice" Width="1.5" PointX="11.25" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.storagedeviceinterface" Width="1.5" PointX="9" PointY="27.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.storagedevicetype" Width="1.5" PointX="9" PointY="29.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.videoconnector" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pcModel.videoconnectorgpu" Width="1.5" PointX="7.625" PointY="10.125" IsExpanded="true" />
-        <AssociationConnector Association="pcModel.FK_partassembly_assembly" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_basepart_manufacturer" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_basepart_parttype" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_case_basepart" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_cpu_basepart" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_gpu_basepart" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_motherboard_basepart" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_partassembly_basepart" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_powersupply_basepart" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_processorcooler_basepart" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_ram_basepart" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_storagedevice_basepart" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_boardformfactorcase_case" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_boardformfactorcase_formfactor" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_case_casesize" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_powersupply_certificate" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_cpu_igpu" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_cpu_socket1" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_powersupply_fandimension" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_processorcooler_fandimension" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_motherboard_formfactor" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_gpu_gpuinterface" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_videoconnectorgpu_gpu" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_hdd_storagedevice" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_motherboard_memorytype" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_ram_memorytype" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_motherboard_socket" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_socketprocessorcooler_processorcooler" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_socketprocessorcooler_socket" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_ssd_storagedevice" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_storagedevice_storagedeviceinterface" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_storagedevice_storagedevicetype" ManuallyRouted="false" />
-        <AssociationConnector Association="pcModel.FK_videoconnectorgpu_videoconnector" ManuallyRouted="false" />
+      <Diagram DiagramId="addadcb620984a57b0ff249ede631b9e" Name="Diagram1">
+        <EntityTypeShape EntityType="ModelPC.assembly" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.basepart" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.boardformfactorcase" Width="1.5" PointX="13.5" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.case" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.casesize" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.certificate" Width="1.5" PointX="6" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.cpu" Width="1.5" PointX="8.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.fandimension" Width="1.5" PointX="9" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.formfactor" Width="1.5" PointX="11.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.gpu" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.gpuinterface" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.hdd" Width="1.5" PointX="13.5" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.igpu" Width="1.5" PointX="6" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.manufacturer" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.memorytype" Width="1.5" PointX="9" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.motherboard" Width="1.5" PointX="5.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.partassembly" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.parttype" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.powersupply" Width="1.5" PointX="8.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.processorcooler" Width="1.5" PointX="11.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.ram" Width="1.5" PointX="11.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.socket" Width="1.5" PointX="6" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.socketprocessorcooler" Width="1.5" PointX="13.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.ssd" Width="1.5" PointX="13.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.storagedevice" Width="1.5" PointX="11.25" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.storagedeviceinterface" Width="1.5" PointX="9" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.storagedevicetype" Width="1.5" PointX="9" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.videoconnector" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelPC.videoconnectorgpu" Width="1.5" PointX="7.5" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="ModelPC.FK_partassembly_assembly" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_basepart_manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_basepart_parttype" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_case_basepart" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_cpu_basepart" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_gpu_basepart" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_motherboard_basepart" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_partassembly_basepart" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_powersupply_basepart" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_processorcooler_basepart" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_ram_basepart" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_storagedevice_basepart" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_boardformfactorcase_case" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_boardformfactorcase_formfactor" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_case_casesize" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_powersupply_certificate" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_cpu_igpu" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_cpu_socket1" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_powersupply_fandimension" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_processorcooler_fandimension" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_motherboard_formfactor" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_gpu_gpuinterface" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_videoconnectorgpu_gpu" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_hdd_storagedevice" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_motherboard_memorytype" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_ram_memorytype" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_motherboard_socket" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_socketprocessorcooler_processorcooler" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_socketprocessorcooler_socket" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_ssd_storagedevice" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_storagedevice_storagedeviceinterface" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_storagedevice_storagedevicetype" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelPC.FK_videoconnectorgpu_videoconnector" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

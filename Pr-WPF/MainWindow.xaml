@@ -5,11 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pr_WPF"
         mc:Ignorable="d"
-        Title="СобериКомпухтер" Height="450" Width="800">
+        Title="СобериКомпухтер" Height="720" Width="1080">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Source="Pages/HomePage.xaml"/>
-        <Rectangle HorizontalAlignment="Center" Height="60" Margin="0,364,0,0" Stroke="Black" VerticalAlignment="Top" Width="800"/>
+        <!-- Заменяем StackPanel на Grid без Margin -->
+        <Grid Grid.Row="0" Background="#FFF0F0F0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Сборка ПК" BorderThickness="0" Background="Transparent" Click="BtnAssemble_Click" Cursor="Hand"/>
+            <Button Grid.Column="1" Content="Мои сборки" BorderThickness="0" Background="Transparent" Click="BtnSaved_Click" Cursor="Hand"/>
+        </Grid>
+
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
