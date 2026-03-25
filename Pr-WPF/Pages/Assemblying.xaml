@@ -105,11 +105,17 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+                <Border Grid.Row="1" BorderThickness="3" BorderBrush="LightGray"/>
                 <TextBlock Grid.Row="0" x:Name="TxtTotalPrice" Text="Итого: 0 ₽" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right"/>
-                <TextBox Grid.Row="1" x:Name="TxtAssemblyAuthor" ToolTip="Имя автора" />
-                <TextBox Grid.Row="2" x:Name="TxtAssemblyName" ToolTip="Название сборки"/>
-                <Button Grid.Row="3" Content="Сохранить сборку" Background="#FF4CAF50" Foreground="White" FontWeight="Bold" Click="BtnSaveAssembly_Click" Cursor="Hand"/>
+                <TextBlock Grid.Row="2" Text="Имя автора: "/>
+                <TextBox Grid.Row="3" x:Name="TxtAssemblyAuthor" ToolTip="Имя автора" />
+                <TextBlock Grid.Row="4" Text="Название сборки: "/>
+                <TextBox Grid.Row="5" x:Name="TxtAssemblyName" ToolTip="Название сборки"/>
+                <Button Grid.Row="6" Content="Сохранить сборку" Background="#FF4CAF50" Foreground="White" FontWeight="Bold" Click="BtnSaveAssembly_Click" Cursor="Hand"/>
             </Grid>
         </Grid>
     </Grid>
