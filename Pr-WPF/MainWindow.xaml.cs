@@ -24,17 +24,17 @@ namespace Pr_WPF
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new BuildPC());
+            MainFrame.Navigate(new Pages.Assemblying());
         }
 
-        private void btnBuilder_Click(object sender, RoutedEventArgs e)
+        private void BtnAssemble_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new BuildPC());
+            MainFrame.Navigate(new Pages.Assemblying());
         }
 
-        private void btnSaved_Click(object sender, RoutedEventArgs e)
+        private void BtnSaved_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new CompletedBuilds());
+            MainFrame.Navigate(new Pages.Assembled());
         }
     }
 }

@@ -13,13 +13,16 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Верхняя панель навигации -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-            <Button x:Name="btnBuilder" Content="Конструктор" Width="150" Height="40" Margin="5" Click="btnBuilder_Click" FontSize="16"/>
-            <Button x:Name="btnSaved" Content="Сохраненные сборки" Width="150" Height="40" Margin="5" Click="btnSaved_Click" FontSize="16"/>
-        </StackPanel>
+        <Grid Grid.Row="0" Background="#FFF0F0F0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Сборка ПК" BorderThickness="0" Background="Transparent" Click="BtnAssemble_Click" Cursor="Hand"/>
+            <Button Grid.Column="1" Content="Мои сборки" BorderThickness="0" Background="Transparent" Click="BtnSaved_Click" Cursor="Hand"/>
+        </Grid>
 
-        <!-- Контейнер для страниц -->
         <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
