@@ -13,11 +13,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="Auto"/>
-            <!-- Разделитель -->
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Левая часть: Каталог -->
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -59,6 +57,7 @@
                                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                             <TextBlock Text="{Binding name}" FontWeight="Bold" TextWrapping="Wrap"/>
                                             <TextBlock Text="{Binding manufacturer.name}" Foreground="Gray"/>
+                                            <TextBlock Text="{Binding Characteristics}" TextWrapping="Wrap" FontSize="11" Foreground="#555555"/>
                                         </StackPanel>
                                         <TextBlock Grid.Column="2" Text="{Binding price, StringFormat={}{0:N0} ₽}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                                     </Grid>
@@ -70,10 +69,8 @@
             </TabControl>
         </Grid>
 
-        <!-- Растягиваемый разделитель -->
         <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="LightGray" Width="5"/>
 
-        <!-- Правая часть: Корзина -->
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -96,6 +93,7 @@
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                 <TextBlock Text="{Binding name}" FontWeight="Bold" TextWrapping="Wrap"/>
                                 <TextBlock Text="{Binding manufacturer.name}" Foreground="Gray"/>
+                                <TextBlock Text="{Binding Characteristics}" TextWrapping="Wrap" FontSize="11" Foreground="#555555"/>
                             </StackPanel>
                             <TextBlock Grid.Column="2" Text="{Binding price, StringFormat={}{0:N0} ₽}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                         </Grid>
@@ -111,8 +109,8 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" x:Name="TxtTotalPrice" Text="Итого: 0 ₽" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right"/>
-                <TextBox Grid.Row="1" x:Name="TxtAssemblyAuthor" ToolTip="Имя автора" />
-                <TextBox Grid.Row="2" x:Name="TxtAssemblyName" ToolTip="Название сборки"/>
+                <TextBox Grid.Row="1" x:Name="TxtAssemblyAuthor" Text="Имя автора"/>
+                <TextBox Grid.Row="2" x:Name="TxtAssemblyName" Text="Название сборки"/>
                 <Button Grid.Row="3" Content="Сохранить сборку" Background="#FF4CAF50" Foreground="White" FontWeight="Bold" Click="BtnSaveAssembly_Click" Cursor="Hand"/>
             </Grid>
         </Grid>

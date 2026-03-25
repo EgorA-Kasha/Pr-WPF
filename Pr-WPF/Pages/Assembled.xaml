@@ -12,7 +12,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="5"/>
-            <!-- Ширина только для разделителя -->
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
@@ -25,7 +24,6 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <!-- ИСПРАВЛЕН StringFormat: добавлены {} -->
                             <TextBlock Grid.Row="0" Text="{Binding name}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
                             <TextBlock Grid.Row="1" Text="{Binding author, StringFormat={}Автор: {0}}" Foreground="Gray"/>
                         </Grid>
@@ -34,7 +32,6 @@
             </ListView>
         </GroupBox>
 
-        <!-- Разделитель -->
         <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightGray"/>
 
         <GroupBox Header="Комплектующие сборки" Grid.Column="2">
@@ -57,6 +54,7 @@
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                     <TextBlock Text="{Binding name}" FontWeight="Bold" TextWrapping="Wrap"/>
                                     <TextBlock Text="{Binding manufacturer.name}" Foreground="Gray"/>
+                                    <TextBlock Text="{Binding Characteristics}" TextWrapping="Wrap" FontSize="11" Foreground="#555555"/>
                                 </StackPanel>
                                 <TextBlock Grid.Column="2" Text="{Binding price, StringFormat={}{0:N0} ₽}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                             </Grid>
