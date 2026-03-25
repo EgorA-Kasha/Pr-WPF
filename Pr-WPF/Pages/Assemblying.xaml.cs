@@ -66,7 +66,6 @@ namespace Pr_WPF.Pages
                 string searchText = TxtSearch.Text?.ToLower() ?? "";
                 int mId = (CmbManufacturer.SelectedItem as manufacturer)?.id ?? 0;
 
-                // Подгружаем производителя заранее (Include)
                 var query = App.db.basepart.Include("manufacturer").Where(p => p.parttypeid == typeId).AsQueryable();
 
                 if (!string.IsNullOrWhiteSpace(searchText))

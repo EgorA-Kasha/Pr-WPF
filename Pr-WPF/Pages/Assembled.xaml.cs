@@ -27,8 +27,6 @@ namespace Pr_WPF.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            // Берем данные напрямую из базы (AsNoTracking), чтобы всегда видеть новые сборки,
-            // при этом НЕ ПЕРЕЗАПИСЫВАЯ глобальный App.db
             LvAssemblies.ItemsSource = App.db.assembly.ToList();
         }
 
@@ -36,7 +34,6 @@ namespace Pr_WPF.Pages
         {
             if (LvAssemblies.SelectedItem is assembly selectedAssembly)
             {
-                // Явно подгружаем связанные таблицы (комплектующие и их производителей)
                 var parts = App.db.partassembly
                                   .Include("basepart")
                                   .Include("basepart.manufacturer")
