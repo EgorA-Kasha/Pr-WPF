@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ModelPC" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="assembly">
           <Key>
             <PropertyRef Name="id" />
@@ -654,7 +654,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище ModelPCContainer">
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="assembly" EntityType="Self.assembly" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="basepart" EntityType="Self.basepart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="boardformfactorcase" EntityType="Self.boardformfactorcase" Schema="dbo" store:Type="Tables" />
@@ -822,7 +853,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ModelPC" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="assembly">
           <Key>
             <PropertyRef Name="id" />
@@ -1538,7 +1569,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="assembly" EntityType="Self.assembly" />
           <EntitySet Name="basepart" EntityType="Self.basepart" />
           <EntitySet Name="boardformfactorcase" EntityType="Self.boardformfactorcase" />
@@ -1701,15 +1732,56 @@
             <End Role="videoconnector" EntitySet="videoconnector" />
             <End Role="videoconnectorgpu" EntitySet="videoconnectorgpu" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelPCContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities1">
           <EntitySetMapping Name="assembly">
-            <EntityTypeMapping TypeName="ModelPC.assembly">
+            <EntityTypeMapping TypeName="Model.assembly">
               <MappingFragment StoreEntitySet="assembly">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1718,7 +1790,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="basepart">
-            <EntityTypeMapping TypeName="ModelPC.basepart">
+            <EntityTypeMapping TypeName="Model.basepart">
               <MappingFragment StoreEntitySet="basepart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1730,7 +1802,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="boardformfactorcase">
-            <EntityTypeMapping TypeName="ModelPC.boardformfactorcase">
+            <EntityTypeMapping TypeName="Model.boardformfactorcase">
               <MappingFragment StoreEntitySet="boardformfactorcase">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="caseid" ColumnName="caseid" />
@@ -1739,7 +1811,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="case">
-            <EntityTypeMapping TypeName="ModelPC.case">
+            <EntityTypeMapping TypeName="Model.case">
               <MappingFragment StoreEntitySet="case">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="sizeid" ColumnName="sizeid" />
@@ -1749,7 +1821,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="casesize">
-            <EntityTypeMapping TypeName="ModelPC.casesize">
+            <EntityTypeMapping TypeName="Model.casesize">
               <MappingFragment StoreEntitySet="casesize">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1757,7 +1829,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="certificate">
-            <EntityTypeMapping TypeName="ModelPC.certificate">
+            <EntityTypeMapping TypeName="Model.certificate">
               <MappingFragment StoreEntitySet="certificate">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1765,7 +1837,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="cpu">
-            <EntityTypeMapping TypeName="ModelPC.cpu">
+            <EntityTypeMapping TypeName="Model.cpu">
               <MappingFragment StoreEntitySet="cpu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="socketid" ColumnName="socketid" />
@@ -1780,7 +1852,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="fandimension">
-            <EntityTypeMapping TypeName="ModelPC.fandimension">
+            <EntityTypeMapping TypeName="Model.fandimension">
               <MappingFragment StoreEntitySet="fandimension">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1788,7 +1860,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="formfactor">
-            <EntityTypeMapping TypeName="ModelPC.formfactor">
+            <EntityTypeMapping TypeName="Model.formfactor">
               <MappingFragment StoreEntitySet="formfactor">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1796,7 +1868,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="gpu">
-            <EntityTypeMapping TypeName="ModelPC.gpu">
+            <EntityTypeMapping TypeName="Model.gpu">
               <MappingFragment StoreEntitySet="gpu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="gpuinterfaceid" ColumnName="gpuinterfaceid" />
@@ -1808,7 +1880,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="gpuinterface">
-            <EntityTypeMapping TypeName="ModelPC.gpuinterface">
+            <EntityTypeMapping TypeName="Model.gpuinterface">
               <MappingFragment StoreEntitySet="gpuinterface">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1816,7 +1888,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="hdd">
-            <EntityTypeMapping TypeName="ModelPC.hdd">
+            <EntityTypeMapping TypeName="Model.hdd">
               <MappingFragment StoreEntitySet="hdd">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="rotationspeed" ColumnName="rotationspeed" />
@@ -1824,7 +1896,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="igpu">
-            <EntityTypeMapping TypeName="ModelPC.igpu">
+            <EntityTypeMapping TypeName="Model.igpu">
               <MappingFragment StoreEntitySet="igpu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1832,7 +1904,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="manufacturer">
-            <EntityTypeMapping TypeName="ModelPC.manufacturer">
+            <EntityTypeMapping TypeName="Model.manufacturer">
               <MappingFragment StoreEntitySet="manufacturer">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1840,7 +1912,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="memorytype">
-            <EntityTypeMapping TypeName="ModelPC.memorytype">
+            <EntityTypeMapping TypeName="Model.memorytype">
               <MappingFragment StoreEntitySet="memorytype">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1848,7 +1920,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="motherboard">
-            <EntityTypeMapping TypeName="ModelPC.motherboard">
+            <EntityTypeMapping TypeName="Model.motherboard">
               <MappingFragment StoreEntitySet="motherboard">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="socketid" ColumnName="socketid" />
@@ -1862,7 +1934,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="partassembly">
-            <EntityTypeMapping TypeName="ModelPC.partassembly">
+            <EntityTypeMapping TypeName="Model.partassembly">
               <MappingFragment StoreEntitySet="partassembly">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="partid" ColumnName="partid" />
@@ -1871,7 +1943,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="parttype">
-            <EntityTypeMapping TypeName="ModelPC.parttype">
+            <EntityTypeMapping TypeName="Model.parttype">
               <MappingFragment StoreEntitySet="parttype">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1879,7 +1951,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="powersupply">
-            <EntityTypeMapping TypeName="ModelPC.powersupply">
+            <EntityTypeMapping TypeName="Model.powersupply">
               <MappingFragment StoreEntitySet="powersupply">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="power" ColumnName="power" />
@@ -1889,7 +1961,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="processorcooler">
-            <EntityTypeMapping TypeName="ModelPC.processorcooler">
+            <EntityTypeMapping TypeName="Model.processorcooler">
               <MappingFragment StoreEntitySet="processorcooler">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="fandimensionid" ColumnName="fandimensionid" />
@@ -1901,7 +1973,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ram">
-            <EntityTypeMapping TypeName="ModelPC.ram">
+            <EntityTypeMapping TypeName="Model.ram">
               <MappingFragment StoreEntitySet="ram">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="memorytypeid" ColumnName="memorytypeid" />
@@ -1913,7 +1985,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="socket">
-            <EntityTypeMapping TypeName="ModelPC.socket">
+            <EntityTypeMapping TypeName="Model.socket">
               <MappingFragment StoreEntitySet="socket">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1921,7 +1993,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="socketprocessorcooler">
-            <EntityTypeMapping TypeName="ModelPC.socketprocessorcooler">
+            <EntityTypeMapping TypeName="Model.socketprocessorcooler">
               <MappingFragment StoreEntitySet="socketprocessorcooler">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="socketid" ColumnName="socketid" />
@@ -1930,7 +2002,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ssd">
-            <EntityTypeMapping TypeName="ModelPC.ssd">
+            <EntityTypeMapping TypeName="Model.ssd">
               <MappingFragment StoreEntitySet="ssd">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tbw" ColumnName="tbw" />
@@ -1938,7 +2010,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="storagedevice">
-            <EntityTypeMapping TypeName="ModelPC.storagedevice">
+            <EntityTypeMapping TypeName="Model.storagedevice">
               <MappingFragment StoreEntitySet="storagedevice">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="capacity" ColumnName="capacity" />
@@ -1948,7 +2020,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="storagedeviceinterface">
-            <EntityTypeMapping TypeName="ModelPC.storagedeviceinterface">
+            <EntityTypeMapping TypeName="Model.storagedeviceinterface">
               <MappingFragment StoreEntitySet="storagedeviceinterface">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1956,7 +2028,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="storagedevicetype">
-            <EntityTypeMapping TypeName="ModelPC.storagedevicetype">
+            <EntityTypeMapping TypeName="Model.storagedevicetype">
               <MappingFragment StoreEntitySet="storagedevicetype">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1964,7 +2036,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ModelPC.sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1975,7 +2047,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="videoconnector">
-            <EntityTypeMapping TypeName="ModelPC.videoconnector">
+            <EntityTypeMapping TypeName="Model.videoconnector">
               <MappingFragment StoreEntitySet="videoconnector">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1983,7 +2055,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="videoconnectorgpu">
-            <EntityTypeMapping TypeName="ModelPC.videoconnectorgpu">
+            <EntityTypeMapping TypeName="Model.videoconnectorgpu">
               <MappingFragment StoreEntitySet="videoconnectorgpu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="gpuid" ColumnName="gpuid" />
@@ -1991,6 +2063,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище Model.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище Model.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище Model.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище Model.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище Model.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Model.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Model.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
