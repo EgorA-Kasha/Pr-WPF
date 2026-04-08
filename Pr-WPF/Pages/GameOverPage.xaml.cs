@@ -20,9 +20,18 @@ namespace Pr_WPF.Pages
     /// </summary>
     public partial class GameOverPage : Page
     {
-        public GameOverPage()
+        private MainWindow _parent;
+
+        public GameOverPage(MainWindow parent)
         {
             InitializeComponent();
+            _parent = parent;
+        }
+
+        private void BtnRestart_Click(object sender, RoutedEventArgs e)
+        {
+            _parent.NavigateTo(new GamePage(_parent));
         }
     }
+}
 }

@@ -8,7 +8,111 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GamePage">
 
-    <Grid>
-        
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="Black" BorderThickness="3" Grid.Row="0">
+            <TextBlock Text="НАЗВАНИЕ ИГРЫ" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="5"/>
+        </Border>
+
+        <Border BorderBrush="Black" BorderThickness="3,0,3,3" Grid.Row="1">
+            <TextBlock x:Name="TxtFloor" Text="Этаж №" FontSize="16" HorizontalAlignment="Center" Margin="5"/>
+        </Border>
+
+        <Border BorderBrush="Black" BorderThickness="3,0,3,3" Grid.Row="2">
+            <Grid>
+                <Image x:Name="BgImage" Stretch="UniformToFill" Opacity="0.5"/>
+                <TextBlock Text="Основная область" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"/>
+                <Grid Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border BorderBrush="Black" BorderThickness="3" Grid.Column="0" Margin="10">
+                        <Grid>
+                            <Image x:Name="ImgPlayer" Stretch="Uniform" Margin="5"/>
+                            <TextBlock Text="персонаж" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+
+                    <Button x:Name="BtnEnemy1" Grid.Column="1" Margin="10" Background="Transparent" BorderBrush="Black" BorderThickness="3" Click="BtnEnemy1_Click">
+                        <Grid>
+                            <Image x:Name="ImgEnemy1" Stretch="Uniform" Margin="5"/>
+                            <TextBlock x:Name="TxtEnemy1" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White"/>
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="BtnEnemy2" Grid.Column="2" Margin="10" Background="Transparent" BorderBrush="Black" BorderThickness="3" Click="BtnEnemy2_Click">
+                        <Grid>
+                            <Image x:Name="ImgEnemy2" Stretch="Uniform" Margin="5"/>
+                            <TextBlock x:Name="TxtEnemy2" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White"/>
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="BtnEnemy3" Grid.Column="3" Margin="10" Background="Transparent" BorderBrush="Black" BorderThickness="3" Click="BtnEnemy3_Click">
+                        <Grid>
+                            <Image x:Name="ImgEnemy3" Stretch="Uniform" Margin="5"/>
+                            <TextBlock x:Name="TxtEnemy3" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White"/>
+                        </Grid>
+                    </Button>
+
+                    <Border x:Name="PanelChest" Grid.Column="1" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="3" Margin="10" Visibility="Collapsed" Background="White">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image x:Name="ImgChestItem" Height="150" Margin="5"/>
+                            <TextBlock x:Name="TxtChestItem" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="TxtChestStats" FontSize="14" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <Border BorderBrush="Black" BorderThickness="3,0,3,3" Grid.Row="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="BtnTake" Content="Взять предмет" Grid.Column="0" Margin="5" Padding="5" Click="BtnTake_Click"/>
+                <Button x:Name="BtnContinue" Content="Продолжить" Grid.Column="1" Margin="5" Padding="5" Click="BtnContinue_Click"/>
+                <Button x:Name="BtnDrop" Content="Бросить предмет" Grid.Column="2" Margin="5" Padding="5" Click="BtnDrop_Click"/>
+
+                <Button x:Name="BtnDefend" Content="ЗАЩИТА" Grid.Column="0" Grid.ColumnSpan="3" Margin="5" Padding="5" Click="BtnDefend_Click" FontWeight="Bold"/>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="Black" BorderThickness="3,0,1.5,3" Grid.Column="0">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Инвентарь игрока" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock x:Name="TxtHp" Text="Здоровье: "/>
+                    <TextBlock x:Name="TxtWeapon" Text="Оружие: "/>
+                    <TextBlock x:Name="TxtArmor" Text="Броня: "/>
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="1.5,0,3,3" Grid.Column="1">
+                <Grid>
+                    <TextBlock Text="Логирование (список событий)" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,5,0,0"/>
+                    <ScrollViewer x:Name="LogScroll" Margin="5,25,5,5">
+                        <TextBlock x:Name="TxtLog" TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+        </Grid>
     </Grid>
 </Page>

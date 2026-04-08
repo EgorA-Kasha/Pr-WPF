@@ -9,6 +9,9 @@
       Title="StartPage">
 
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="НАЗВАНИЕ ИГРЫ" FontSize="48" FontWeight="Bold" Margin="0,0,0,50" HorizontalAlignment="Center"/>
+            <Button x:Name="BtnStart" Content="Начать игру" FontSize="24" Padding="20,10" Click="BtnStart_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

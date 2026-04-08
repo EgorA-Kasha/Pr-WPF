@@ -20,9 +20,17 @@ namespace Pr_WPF.Pages
     /// </summary>
     public partial class StartPage : Page
     {
-        public StartPage()
+        private MainWindow _parent;
+
+        public StartPage(MainWindow parent)
         {
             InitializeComponent();
+            _parent = parent;
+        }
+
+        private void BtnStart_Click(object sender, RoutedEventArgs e)
+        {
+            _parent.NavigateTo(new GamePage(_parent));
         }
     }
 }
