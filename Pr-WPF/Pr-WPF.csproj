@@ -151,8 +151,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ArchemageCPP.jpg" />
-    <Resource Include="Images\Kowalski.jpg" />
     <Resource Include="Images\PestovCMM.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Kowalski.jpg" />
     <Resource Include="Images\VVG.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
