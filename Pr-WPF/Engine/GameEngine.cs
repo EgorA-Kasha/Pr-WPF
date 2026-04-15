@@ -55,7 +55,7 @@ namespace Pr_WPF.Engine
             {
                 int type = Rng.Next(0, 3);
                 if (type == 0) CurrentEnemies.Add(new Goblin());
-                else if (type == 1) CurrentEnemies.Add(new Skeleton());
+                else if (type == 1) CurrentEnemies.Add(new Skelet());
                 else CurrentEnemies.Add(new Mage());
             }
             Logger.Log($"Вы встретили врагов ({enemyCount} шт.)!");
@@ -98,7 +98,7 @@ namespace Pr_WPF.Engine
 
             Player.IsDefending = false;
             target.TakeDamage(Player.TotalDamage);
-            Logger.Log($"Вы атаковали {target.Name} на {Player.TotalDamage} урона.");
+            Logger.Log($"Вы нанесли {target.Name} {Player.TotalDamage} урона.");
 
             if (target.IsDead)
             {

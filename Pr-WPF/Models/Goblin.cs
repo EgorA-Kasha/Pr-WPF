@@ -9,9 +9,11 @@ namespace Pr_WPF.Models
 {
     internal class Goblin : Enemy
     {
+        protected double CritChance = 0.20;
+
         public Goblin()
         {
-            Name = "Гоблин";
+            Name = "goblin";
             MaxHealth = 30;
             CurrentHealth = 30;
             BaseDamage = 12;
@@ -21,13 +23,15 @@ namespace Pr_WPF.Models
 
         public override void PerformAttack(Player player)
         {
-            bool isCrit = Rng.NextDouble() < 0.2;
+            bool isCrit = Rng.NextDouble() < CritChance;
             int originalDamage = BaseDamage;
+
             if (isCrit)
             {
                 BaseDamage *= 2;
-                Logger.Log($"{Name} наности критический урон!");
+                Logger.Log($"{Name} наносит критический удар!");
             }
+
             base.PerformAttack(player);
             BaseDamage = originalDamage;
         }

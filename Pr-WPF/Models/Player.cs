@@ -16,8 +16,8 @@ namespace Pr_WPF.Models
         public Player()
         {
             Name = "player";
-            MaxHealth = 50;
-            CurrentHealth = 50;
+            MaxHealth = 100;
+            CurrentHealth = 100;
             BaseDamage = 5;
             BaseDefense = 2;
             ImageName = "player.jpg";

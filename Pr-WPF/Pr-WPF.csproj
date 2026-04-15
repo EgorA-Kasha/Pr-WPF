@@ -84,12 +84,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ArchemageCPP.cs" />
     <Compile Include="Models\Armor.cs" />
     <Compile Include="Models\Enemy.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Goblin.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Kowalski.cs" />
     <Compile Include="Models\Mage.cs" />
+    <Compile Include="Models\PestovCMM.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Potion.cs" />
     <Compile Include="Models\Skelet.cs" />
@@ -140,6 +143,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\player.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\goblin.jpg" />
+    <Resource Include="Images\mage.jpg" />
+    <Resource Include="Images\skelet.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ArchemageCPP.jpg" />
+    <Resource Include="Images\Kowalski.jpg" />
+    <Resource Include="Images\PestovCMM.jpg" />
+    <Resource Include="Images\VVG.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

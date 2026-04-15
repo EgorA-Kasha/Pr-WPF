@@ -9,9 +9,23 @@
       Title="GameOverPage">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="250"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
             <TextBlock Text="ВЫ ПРОИГРАЛИ" FontSize="48" FontWeight="Bold" Foreground="Red" Margin="0,0,0,50" HorizontalAlignment="Center"/>
             <Button x:Name="BtnRestart" Content="Начать заново" FontSize="24" Padding="20,10" Click="BtnRestart_Click"/>
         </StackPanel>
+
+        <Border BorderBrush="Black" BorderThickness="0,3,0,0" Grid.Row="1" Background="White">
+            <Grid>
+                <TextBlock Text="ЛОхГ" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,5,0,0" FontSize="16"/>
+                <ScrollViewer x:Name="LogScroll" Margin="10,35,10,10" VerticalScrollBarVisibility="Auto">
+                    <TextBlock x:Name="TxtFinalLog" TextWrapping="Wrap" FontSize="14"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
     </Grid>
 </Page>

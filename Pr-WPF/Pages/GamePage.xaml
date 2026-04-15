@@ -28,7 +28,6 @@
         <Border BorderBrush="Black" BorderThickness="3,0,3,3" Grid.Row="2">
             <Grid>
                 <Image x:Name="BgImage" Stretch="UniformToFill" Opacity="0.5"/>
-                <TextBlock Text="Основная область" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"/>
                 <Grid Margin="20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -40,7 +39,6 @@
                     <Border BorderBrush="Black" BorderThickness="3" Grid.Column="0" Margin="10">
                         <Grid>
                             <Image x:Name="ImgPlayer" Stretch="Uniform" Margin="5"/>
-                            <TextBlock Text="персонаж" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </Border>
 

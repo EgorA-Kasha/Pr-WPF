@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pr_WPF.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,9 @@ namespace Pr_WPF.Pages
         {
             InitializeComponent();
             _parent = parent;
+
+            TxtFinalLog.Text = Logger.FullLog;
+            Loaded += (s, e) => LogScroll.ScrollToEnd();
         }
 
         private void BtnRestart_Click(object sender, RoutedEventArgs e)
@@ -34,4 +38,4 @@ namespace Pr_WPF.Pages
         }
     }
 }
-}
+

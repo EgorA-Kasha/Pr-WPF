@@ -9,9 +9,11 @@ namespace Pr_WPF.Models
 {
     internal class Mage : Enemy
     {
+        protected double FreezeChance = 0.15;
+
         public Mage()
         {
-            Name = "Маг";
+            Name = "mage";
             MaxHealth = 25;
             CurrentHealth = 25;
             BaseDamage = 15;
@@ -22,11 +24,10 @@ namespace Pr_WPF.Models
         public override void PerformAttack(Player player)
         {
             base.PerformAttack(player);
-
-            if (!player.IsDead && Rng.NextDouble() < 0.15)
+            if (!player.IsDead && Rng.NextDouble() < FreezeChance)
             {
                 player.IsFrozen = true;
-                Logger.Log($"{Name} замораживает игрока!");
+                Logger.Log($"{Name} заморозил игрока!");
             }
         }
     }
