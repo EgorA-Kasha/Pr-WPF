@@ -13,5 +13,7 @@ namespace Pr_WPF
     /// </summary>
     public partial class App : Application
     {
+        public static Entities db = new Entities();
+        public static User CurrentUser = null;
     }
 }
