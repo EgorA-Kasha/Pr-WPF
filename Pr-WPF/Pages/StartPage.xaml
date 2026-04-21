@@ -1,0 +1,73 @@
+﻿<Page x:Class="Pr_WPF.Pages.StartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pr_WPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StartPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Margin="10">
+            <Button Content="Каталог косметики" Click="Products_Click" Padding="10,5"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="BtnAuth" Content="Войти" Click="Auth_Click" Padding="10,5" Margin="5,0"/>
+                <Button x:Name="BtnAccount" Content="Личный кабинет" Click="Account_Click" Padding="10,5" Margin="5,0" Visibility="Collapsed"/>
+                <Button x:Name="BtnLogout" Content="Выйти" Click="Logout_Click" Padding="10,5" Margin="5,0" Visibility="Collapsed"/>
+            </StackPanel>
+        </DockPanel>
+
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Margin="5">
+                <TextBlock Text="Выберите услугу:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <ListBox x:Name="ListServices" SelectionChanged="ListServices_SelectionChanged" DisplayMemberPath="Name"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="5">
+                <TextBlock Text="Выберите мастера:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <ListBox x:Name="ListMasters" SelectionChanged="ListMasters_SelectionChanged" DisplayMemberPath="FullName"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Margin="5" x:Name="PanelBooking" Visibility="Collapsed">
+                <TextBlock Text="Запись на сеанс" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <TextBlock x:Name="TxtSelectedService" Margin="0,5"/>
+                <TextBlock x:Name="TxtSelectedMaster" Margin="0,5"/>
+
+                <TextBlock Text="Выберите дату:" Margin="0,10,0,5"/>
+                <DatePicker x:Name="PickerDate"/>
+
+                <TextBlock Text="Время:" Margin="0,10,0,5"/>
+                <ComboBox x:Name="ComboTime">
+                    <ComboBoxItem Content="10:00"/>
+                    <ComboBoxItem Content="12:00"/>
+                    <ComboBoxItem Content="14:00"/>
+                    <ComboBoxItem Content="16:00"/>
+                    <ComboBoxItem Content="18:00"/>
+                </ComboBox>
+
+                <TextBlock Text="Способ оплаты:" Margin="0,10,0,5"/>
+                <ComboBox x:Name="ComboPayment">
+                    <ComboBoxItem Content="Наличные"/>
+                    <ComboBoxItem Content="Карта"/>
+                </ComboBox>
+
+                <TextBlock Text="Комментарий:" Margin="0,10,0,5"/>
+                <TextBox x:Name="TxtComment" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+                <Button Content="Записаться" Click="Book_Click" Margin="0,15,0,0" Padding="10"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

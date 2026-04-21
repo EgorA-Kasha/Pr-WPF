@@ -23,6 +23,7 @@ namespace Pr_WPF
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new StartPage());
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Pr_WPF
     public partial class App : Application
     {
         public static Entities db = new Entities();
-        public static User CurrentUser = null;
+        public static User CurrentUser;
+        public static Dictionary<Product, int> Cart = new Dictionary<Product, int>();
     }
 }
