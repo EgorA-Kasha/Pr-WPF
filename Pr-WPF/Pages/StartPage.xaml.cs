@@ -23,8 +23,12 @@ namespace Pr_WPF.Pages
         public StartPage()
         {
             InitializeComponent();
-            UpdateUI();
             LoadData();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateUI();
         }
 
         private void UpdateUI()
@@ -45,14 +49,14 @@ namespace Pr_WPF.Pages
 
         private void LoadData()
         {
-            ListServices.ItemsSource = App.db.ServiceTypes.ToList();
+            ListServices.ItemsSource = App.db.ServiceType.ToList();
         }
 
         private void ListServices_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ListServices.SelectedItem is ServiceType service)
             {
-                ListMasters.ItemsSource = App.db.MasterServices
+                ListMasters.ItemsSource = App.db.MasterService
                     .Where(ms => ms.ServiceTypeID == service.ID)
                     .Select(ms => ms.User)
                     .ToList();
@@ -96,7 +100,7 @@ namespace Pr_WPF.Pages
                     Comment = TxtComment.Text,
                     Status = "Активна"
                 };
-                App.db.Bookings.Add(b);
+                App.db.Booking.Add(b);
                 App.db.SaveChanges();
                 MessageBox.Show("Вы успешно записаны!");
                 PanelBooking.Visibility = Visibility.Collapsed;
@@ -104,7 +108,9 @@ namespace Pr_WPF.Pages
         }
 
         private void Auth_Click(object sender, RoutedEventArgs e) => NavigationService.Navigate(new AuthPage());
+
         private void Products_Click(object sender, RoutedEventArgs e) => NavigationService.Navigate(new ProductsPage());
+
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             App.CurrentUser = null;
@@ -113,10 +119,21 @@ namespace Pr_WPF.Pages
 
         private void Account_Click(object sender, RoutedEventArgs e)
         {
-            if (App.CurrentUser.RoleID == 1) NavigationService.Navigate(new AccountPage());
-            else if (App.CurrentUser.RoleID == 2) NavigationService.Navigate(new MasterPage());
-            else if (App.CurrentUser.RoleID == 3) NavigationService.Navigate(new ManagerPage());
-            else if (App.CurrentUser.RoleID == 4) NavigationService.Navigate(new AdminPage());
+            switch (App.CurrentUser.RoleID)
+            {
+                case 1:
+                    NavigationService.Navigate(new AccountPage());
+                    break;
+                case 2:
+                    NavigationService.Navigate(new MasterPage());
+                    break;
+                case 3:
+                    NavigationService.Navigate(new ManagerPage());
+                    break;
+                case 4:
+                    NavigationService.Navigate(new AdminPage());
+                    break;
+            }
         }
     }
 }
