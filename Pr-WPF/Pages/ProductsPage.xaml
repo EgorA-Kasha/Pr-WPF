@@ -20,16 +20,19 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBox x:Name="TxtSearch" Width="200" TextChanged="Filter_Changed" Margin="5" Padding="2"/>
-                <ComboBox x:Name="ComboType" Width="150" SelectionChanged="Filter_Changed" Margin="5"/>
-                <ComboBox x:Name="ComboManuf" Width="150" SelectionChanged="Filter_Changed" Margin="5"/>
+
+                <ComboBox x:Name="ComboType" Width="150" DisplayMemberPath="Name" SelectionChanged="Filter_Changed" Margin="5"/>
+
+                <ComboBox x:Name="ComboManuf" Width="150" DisplayMemberPath="Name" SelectionChanged="Filter_Changed" Margin="5"/>
             </StackPanel>
         </DockPanel>
 
-        <ScrollViewer Grid.Row="1" Margin="10">
+        <!-- Добавлены свойства VerticalScrollBarVisibility="Auto" и HorizontalScrollBarVisibility="Disabled" -->
+        <ScrollViewer Grid.Row="1" Margin="10" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <ItemsControl x:Name="ListProducts">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel HorizontalAlignment="Center"/>
+                        <WrapPanel HorizontalAlignment="Left"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>

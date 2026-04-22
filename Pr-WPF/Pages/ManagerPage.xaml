@@ -16,20 +16,71 @@
 
         <DockPanel Grid.Row="0" Margin="10">
             <Button Content="Назад" Click="Back_Click" Padding="10,5" DockPanel.Dock="Left"/>
+            <Button Content="Выйти" Click="Logout_Click" Padding="10,5" Margin="10,0,10,0" DockPanel.Dock="Left"/>
             <Button Content="Сохранить изменения" Click="Save_Click" Padding="10,5" DockPanel.Dock="Right"/>
         </DockPanel>
 
         <TabControl Grid.Row="1" Margin="10">
             <TabItem Header="Записи">
-                <DataGrid x:Name="GridBookings" AutoGenerateColumns="False" CanUserAddRows="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Дата/Время" Binding="{Binding DateTime}"/>
-                        <DataGridTextColumn Header="Статус" Binding="{Binding Status}"/>
-                        <DataGridTextColumn Header="Комментарий" Binding="{Binding Comment}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid Grid.Row="0" x:Name="GridBookings" AutoGenerateColumns="False" CanUserAddRows="False" PreviewKeyDown="GridBookings_PreviewKeyDown" Margin="0,0,0,10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Дата/Время" Binding="{Binding DateTime}"/>
+                            <DataGridTextColumn Header="Статус" Binding="{Binding Status}"/>
+                            <DataGridTextColumn Header="Комментарий" Binding="{Binding Comment}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <GroupBox Grid.Row="1" Header="Создание новой записи">
+                        <StackPanel>
+                            <WrapPanel Margin="5">
+                                <TextBlock Text="Клиент:" VerticalAlignment="Center" Margin="5"/>
+                                <ComboBox x:Name="ComboClients" Width="250" Margin="5" DisplayMemberPath="FullName"/>
+                            </WrapPanel>
+
+                            <WrapPanel Margin="5">
+                                <TextBlock Text="Услуга:" VerticalAlignment="Center" Margin="5"/>
+                                <ComboBox x:Name="ComboServices" Width="150" Margin="5" DisplayMemberPath="Name" SelectionChanged="ComboServices_SelectionChanged"/>
+
+                                <TextBlock Text="Мастер:" VerticalAlignment="Center" Margin="5"/>
+                                <ComboBox x:Name="ComboMasters" Width="150" Margin="5" DisplayMemberPath="FullName"/>
+
+                                <TextBlock Text="Дата:" VerticalAlignment="Center" Margin="5"/>
+                                <DatePicker x:Name="PickerDate" Margin="5"/>
+
+                                <TextBlock Text="Время:" VerticalAlignment="Center" Margin="5"/>
+                                <ComboBox x:Name="ComboTime" Margin="5">
+                                    <ComboBoxItem Content="10:00"/>
+                                    <ComboBoxItem Content="12:00"/>
+                                    <ComboBoxItem Content="14:00"/>
+                                    <ComboBoxItem Content="16:00"/>
+                                    <ComboBoxItem Content="18:00"/>
+                                </ComboBox>
+                            </WrapPanel>
+
+                            <WrapPanel Margin="5">
+                                <TextBlock Text="Способ оплаты:" VerticalAlignment="Center" Margin="5"/>
+                                <ComboBox x:Name="ComboPayment" Margin="5">
+                                    <ComboBoxItem Content="Наличные"/>
+                                    <ComboBoxItem Content="Карта"/>
+                                </ComboBox>
+
+                                <TextBlock Text="Комментарий:" VerticalAlignment="Center" Margin="5"/>
+                                <TextBox x:Name="TxtComment" Width="200" Margin="5" Padding="2"/>
+
+                                <Button Content="Добавить запись" Click="AddBooking_Click" Margin="20,5,5,5" Padding="10,5"/>
+                            </WrapPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
             </TabItem>
+
             <TabItem Header="Заказы">
                 <DataGrid x:Name="GridOrders" AutoGenerateColumns="False" CanUserAddRows="False">
                     <DataGrid.Columns>
@@ -40,6 +91,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
+
             <TabItem Header="Товары">
                 <DataGrid x:Name="GridProducts" AutoGenerateColumns="False">
                     <DataGrid.Columns>
@@ -50,6 +102,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
+
             <TabItem Header="Услуги">
                 <DataGrid x:Name="GridServices" AutoGenerateColumns="True"/>
             </TabItem>

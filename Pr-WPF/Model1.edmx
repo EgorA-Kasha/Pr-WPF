@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище dasa_bannihModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Booking">
           <Key>
             <PropertyRef Name="ID" />
@@ -102,7 +102,7 @@
           <Property Name="RoleID" Type="int" Nullable="false" />
           <Property Name="IsFrozen" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Booking__ClientI__4BAC3F29">
+        <Association Name="FK__Booking__ClientI__5EBF139D">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -114,7 +114,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Booking__MasterI__4CA06362">
+        <Association Name="FK__Booking__MasterI__5FB337D6">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -126,7 +126,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Booking__Service__4D94879B">
+        <Association Name="FK__Booking__Service__60A75C0F">
           <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="1" />
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -138,7 +138,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MasterSer__Maste__47DBAE45">
+        <Association Name="FK__MasterSer__Maste__5AEE82B9">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="MasterService" Type="Self.MasterService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -150,7 +150,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MasterSer__Servi__48CFD27E">
+        <Association Name="FK__MasterSer__Servi__5BE2A6F2">
           <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="1" />
           <End Role="MasterService" Type="Self.MasterService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -162,7 +162,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__ClientID__5070F446">
+        <Association Name="FK__Order__ClientID__6383C8BA">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -174,7 +174,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderProd__Order__534D60F1">
+        <Association Name="FK__OrderProd__Order__66603565">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -186,7 +186,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderProd__Produ__5441852A">
+        <Association Name="FK__OrderProd__Produ__6754599E">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -198,7 +198,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Manufac__4222D4EF">
+        <Association Name="FK__Product__Manufac__5535A963">
           <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -210,7 +210,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Product__4316F928">
+        <Association Name="FK__Product__Product__5629CD9C">
           <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -222,7 +222,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__User__RoleID__398D8EEE">
+        <Association Name="FK__User__RoleID__4CA06362">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -234,7 +234,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище ModelContainer">
+        <EntityContainer Name="Хранилище dasa_bannihModelContainer">
           <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MasterService" EntityType="Self.MasterService" Schema="dbo" store:Type="Tables" />
@@ -245,47 +245,47 @@
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Booking__ClientI__4BAC3F29" Association="Self.FK__Booking__ClientI__4BAC3F29">
+          <AssociationSet Name="FK__Booking__ClientI__5EBF139D" Association="Self.FK__Booking__ClientI__5EBF139D">
             <End Role="User" EntitySet="User" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK__Booking__MasterI__4CA06362" Association="Self.FK__Booking__MasterI__4CA06362">
+          <AssociationSet Name="FK__Booking__MasterI__5FB337D6" Association="Self.FK__Booking__MasterI__5FB337D6">
             <End Role="User" EntitySet="User" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK__Booking__Service__4D94879B" Association="Self.FK__Booking__Service__4D94879B">
+          <AssociationSet Name="FK__Booking__Service__60A75C0F" Association="Self.FK__Booking__Service__60A75C0F">
             <End Role="ServiceType" EntitySet="ServiceType" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK__MasterSer__Maste__47DBAE45" Association="Self.FK__MasterSer__Maste__47DBAE45">
+          <AssociationSet Name="FK__MasterSer__Maste__5AEE82B9" Association="Self.FK__MasterSer__Maste__5AEE82B9">
             <End Role="User" EntitySet="User" />
             <End Role="MasterService" EntitySet="MasterService" />
           </AssociationSet>
-          <AssociationSet Name="FK__MasterSer__Servi__48CFD27E" Association="Self.FK__MasterSer__Servi__48CFD27E">
+          <AssociationSet Name="FK__MasterSer__Servi__5BE2A6F2" Association="Self.FK__MasterSer__Servi__5BE2A6F2">
             <End Role="ServiceType" EntitySet="ServiceType" />
             <End Role="MasterService" EntitySet="MasterService" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__ClientID__5070F446" Association="Self.FK__Order__ClientID__5070F446">
+          <AssociationSet Name="FK__Order__ClientID__6383C8BA" Association="Self.FK__Order__ClientID__6383C8BA">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderProd__Order__534D60F1" Association="Self.FK__OrderProd__Order__534D60F1">
+          <AssociationSet Name="FK__OrderProd__Order__66603565" Association="Self.FK__OrderProd__Order__66603565">
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderProduct" EntitySet="OrderProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderProd__Produ__5441852A" Association="Self.FK__OrderProd__Produ__5441852A">
+          <AssociationSet Name="FK__OrderProd__Produ__6754599E" Association="Self.FK__OrderProd__Produ__6754599E">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderProduct" EntitySet="OrderProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Manufac__4222D4EF" Association="Self.FK__Product__Manufac__4222D4EF">
+          <AssociationSet Name="FK__Product__Manufac__5535A963" Association="Self.FK__Product__Manufac__5535A963">
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Product__4316F928" Association="Self.FK__Product__Product__4316F928">
+          <AssociationSet Name="FK__Product__Product__5629CD9C" Association="Self.FK__Product__Product__5629CD9C">
             <End Role="ProductType" EntitySet="ProductType" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__User__RoleID__398D8EEE" Association="Self.FK__User__RoleID__398D8EEE">
+          <AssociationSet Name="FK__User__RoleID__4CA06362" Association="Self.FK__User__RoleID__4CA06362">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
@@ -294,7 +294,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="dasa_bannihModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Booking">
           <Key>
             <PropertyRef Name="ID" />
@@ -307,9 +307,9 @@
           <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Booking__ClientI__4BAC3F29" FromRole="Booking" ToRole="User" />
-          <NavigationProperty Name="User1" Relationship="Self.FK__Booking__MasterI__4CA06362" FromRole="Booking" ToRole="User" />
-          <NavigationProperty Name="ServiceType" Relationship="Self.FK__Booking__Service__4D94879B" FromRole="Booking" ToRole="ServiceType" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Booking__ClientI__5EBF139D" FromRole="Booking" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK__Booking__MasterI__5FB337D6" FromRole="Booking" ToRole="User" />
+          <NavigationProperty Name="ServiceType" Relationship="Self.FK__Booking__Service__60A75C0F" FromRole="Booking" ToRole="ServiceType" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
@@ -317,7 +317,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Manufac__4222D4EF" FromRole="Manufacturer" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Manufac__5535A963" FromRole="Manufacturer" ToRole="Product" />
         </EntityType>
         <EntityType Name="MasterService">
           <Key>
@@ -326,8 +326,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MasterID" Type="Int32" Nullable="false" />
           <Property Name="ServiceTypeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK__MasterSer__Maste__47DBAE45" FromRole="MasterService" ToRole="User" />
-          <NavigationProperty Name="ServiceType" Relationship="Self.FK__MasterSer__Servi__48CFD27E" FromRole="MasterService" ToRole="ServiceType" />
+          <NavigationProperty Name="User" Relationship="Self.FK__MasterSer__Maste__5AEE82B9" FromRole="MasterService" ToRole="User" />
+          <NavigationProperty Name="ServiceType" Relationship="Self.FK__MasterSer__Servi__5BE2A6F2" FromRole="MasterService" ToRole="ServiceType" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -339,8 +339,8 @@
           <Property Name="ReceiveDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Order__ClientID__5070F446" FromRole="Order" ToRole="User" />
-          <NavigationProperty Name="OrderProduct" Relationship="Self.FK__OrderProd__Order__534D60F1" FromRole="Order" ToRole="OrderProduct" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Order__ClientID__6383C8BA" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="OrderProduct" Relationship="Self.FK__OrderProd__Order__66603565" FromRole="Order" ToRole="OrderProduct" />
         </EntityType>
         <EntityType Name="OrderProduct">
           <Key>
@@ -350,8 +350,8 @@
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK__OrderProd__Order__534D60F1" FromRole="OrderProduct" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__OrderProd__Produ__5441852A" FromRole="OrderProduct" ToRole="Product" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__OrderProd__Order__66603565" FromRole="OrderProduct" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__OrderProd__Produ__6754599E" FromRole="OrderProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -367,9 +367,9 @@
           <Property Name="IsFrozen" Type="Boolean" Nullable="false" />
           <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
           <Property Name="ProductTypeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Manufacturer" Relationship="Self.FK__Product__Manufac__4222D4EF" FromRole="Product" ToRole="Manufacturer" />
-          <NavigationProperty Name="OrderProduct" Relationship="Self.FK__OrderProd__Produ__5441852A" FromRole="Product" ToRole="OrderProduct" />
-          <NavigationProperty Name="ProductType" Relationship="Self.FK__Product__Product__4316F928" FromRole="Product" ToRole="ProductType" />
+          <NavigationProperty Name="Manufacturer" Relationship="Self.FK__Product__Manufac__5535A963" FromRole="Product" ToRole="Manufacturer" />
+          <NavigationProperty Name="OrderProduct" Relationship="Self.FK__OrderProd__Produ__6754599E" FromRole="Product" ToRole="OrderProduct" />
+          <NavigationProperty Name="ProductType" Relationship="Self.FK__Product__Product__5629CD9C" FromRole="Product" ToRole="ProductType" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -377,7 +377,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Product__4316F928" FromRole="ProductType" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Product__5629CD9C" FromRole="ProductType" ToRole="Product" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -385,7 +385,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK__User__RoleID__398D8EEE" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Self.FK__User__RoleID__4CA06362" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="ServiceType">
           <Key>
@@ -394,8 +394,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Booking" Relationship="Self.FK__Booking__Service__4D94879B" FromRole="ServiceType" ToRole="Booking" />
-          <NavigationProperty Name="MasterService" Relationship="Self.FK__MasterSer__Servi__48CFD27E" FromRole="ServiceType" ToRole="MasterService" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK__Booking__Service__60A75C0F" FromRole="ServiceType" ToRole="Booking" />
+          <NavigationProperty Name="MasterService" Relationship="Self.FK__MasterSer__Servi__5BE2A6F2" FromRole="ServiceType" ToRole="MasterService" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -408,13 +408,13 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoleID" Type="Int32" Nullable="false" />
           <Property Name="IsFrozen" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Booking" Relationship="Self.FK__Booking__ClientI__4BAC3F29" FromRole="User" ToRole="Booking" />
-          <NavigationProperty Name="Booking1" Relationship="Self.FK__Booking__MasterI__4CA06362" FromRole="User" ToRole="Booking" />
-          <NavigationProperty Name="MasterService" Relationship="Self.FK__MasterSer__Maste__47DBAE45" FromRole="User" ToRole="MasterService" />
-          <NavigationProperty Name="Order" Relationship="Self.FK__Order__ClientID__5070F446" FromRole="User" ToRole="Order" />
-          <NavigationProperty Name="Role" Relationship="Self.FK__User__RoleID__398D8EEE" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK__Booking__ClientI__5EBF139D" FromRole="User" ToRole="Booking" />
+          <NavigationProperty Name="Booking1" Relationship="Self.FK__Booking__MasterI__5FB337D6" FromRole="User" ToRole="Booking" />
+          <NavigationProperty Name="MasterService" Relationship="Self.FK__MasterSer__Maste__5AEE82B9" FromRole="User" ToRole="MasterService" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Order__ClientID__6383C8BA" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__User__RoleID__4CA06362" FromRole="User" ToRole="Role" />
         </EntityType>
-        <Association Name="FK__Booking__ClientI__4BAC3F29">
+        <Association Name="FK__Booking__ClientI__5EBF139D">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -426,7 +426,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Booking__MasterI__4CA06362">
+        <Association Name="FK__Booking__MasterI__5FB337D6">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -438,7 +438,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Booking__Service__4D94879B">
+        <Association Name="FK__Booking__Service__60A75C0F">
           <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="1" />
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -450,7 +450,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Manufac__4222D4EF">
+        <Association Name="FK__Product__Manufac__5535A963">
           <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -462,7 +462,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MasterSer__Maste__47DBAE45">
+        <Association Name="FK__MasterSer__Maste__5AEE82B9">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="MasterService" Type="Self.MasterService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -474,7 +474,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MasterSer__Servi__48CFD27E">
+        <Association Name="FK__MasterSer__Servi__5BE2A6F2">
           <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="1" />
           <End Role="MasterService" Type="Self.MasterService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -486,7 +486,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__ClientID__5070F446">
+        <Association Name="FK__Order__ClientID__6383C8BA">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -498,7 +498,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderProd__Order__534D60F1">
+        <Association Name="FK__OrderProd__Order__66603565">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -510,7 +510,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderProd__Produ__5441852A">
+        <Association Name="FK__OrderProd__Produ__6754599E">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -522,7 +522,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Product__4316F928">
+        <Association Name="FK__Product__Product__5629CD9C">
           <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -534,7 +534,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__User__RoleID__398D8EEE">
+        <Association Name="FK__User__RoleID__4CA06362">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -557,47 +557,47 @@
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="ServiceType" EntityType="Self.ServiceType" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK__Booking__ClientI__4BAC3F29" Association="Self.FK__Booking__ClientI__4BAC3F29">
+          <AssociationSet Name="FK__Booking__ClientI__5EBF139D" Association="Self.FK__Booking__ClientI__5EBF139D">
             <End Role="User" EntitySet="User" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK__Booking__MasterI__4CA06362" Association="Self.FK__Booking__MasterI__4CA06362">
+          <AssociationSet Name="FK__Booking__MasterI__5FB337D6" Association="Self.FK__Booking__MasterI__5FB337D6">
             <End Role="User" EntitySet="User" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK__Booking__Service__4D94879B" Association="Self.FK__Booking__Service__4D94879B">
+          <AssociationSet Name="FK__Booking__Service__60A75C0F" Association="Self.FK__Booking__Service__60A75C0F">
             <End Role="ServiceType" EntitySet="ServiceType" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Manufac__4222D4EF" Association="Self.FK__Product__Manufac__4222D4EF">
+          <AssociationSet Name="FK__Product__Manufac__5535A963" Association="Self.FK__Product__Manufac__5535A963">
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__MasterSer__Maste__47DBAE45" Association="Self.FK__MasterSer__Maste__47DBAE45">
+          <AssociationSet Name="FK__MasterSer__Maste__5AEE82B9" Association="Self.FK__MasterSer__Maste__5AEE82B9">
             <End Role="User" EntitySet="User" />
             <End Role="MasterService" EntitySet="MasterService" />
           </AssociationSet>
-          <AssociationSet Name="FK__MasterSer__Servi__48CFD27E" Association="Self.FK__MasterSer__Servi__48CFD27E">
+          <AssociationSet Name="FK__MasterSer__Servi__5BE2A6F2" Association="Self.FK__MasterSer__Servi__5BE2A6F2">
             <End Role="ServiceType" EntitySet="ServiceType" />
             <End Role="MasterService" EntitySet="MasterService" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__ClientID__5070F446" Association="Self.FK__Order__ClientID__5070F446">
+          <AssociationSet Name="FK__Order__ClientID__6383C8BA" Association="Self.FK__Order__ClientID__6383C8BA">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderProd__Order__534D60F1" Association="Self.FK__OrderProd__Order__534D60F1">
+          <AssociationSet Name="FK__OrderProd__Order__66603565" Association="Self.FK__OrderProd__Order__66603565">
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderProduct" EntitySet="OrderProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderProd__Produ__5441852A" Association="Self.FK__OrderProd__Produ__5441852A">
+          <AssociationSet Name="FK__OrderProd__Produ__6754599E" Association="Self.FK__OrderProd__Produ__6754599E">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderProduct" EntitySet="OrderProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Product__4316F928" Association="Self.FK__Product__Product__4316F928">
+          <AssociationSet Name="FK__Product__Product__5629CD9C" Association="Self.FK__Product__Product__5629CD9C">
             <End Role="ProductType" EntitySet="ProductType" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__User__RoleID__398D8EEE" Association="Self.FK__User__RoleID__398D8EEE">
+          <AssociationSet Name="FK__User__RoleID__4CA06362" Association="Self.FK__User__RoleID__4CA06362">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
@@ -607,9 +607,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище dasa_bannihModelContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Booking">
-            <EntityTypeMapping TypeName="Model.Booking">
+            <EntityTypeMapping TypeName="dasa_bannihModel.Booking">
               <MappingFragment StoreEntitySet="Booking">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ClientID" ColumnName="ClientID" />
@@ -623,7 +623,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Manufacturer">
-            <EntityTypeMapping TypeName="Model.Manufacturer">
+            <EntityTypeMapping TypeName="dasa_bannihModel.Manufacturer">
               <MappingFragment StoreEntitySet="Manufacturer">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -631,7 +631,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MasterService">
-            <EntityTypeMapping TypeName="Model.MasterService">
+            <EntityTypeMapping TypeName="dasa_bannihModel.MasterService">
               <MappingFragment StoreEntitySet="MasterService">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MasterID" ColumnName="MasterID" />
@@ -640,7 +640,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="Model.Order">
+            <EntityTypeMapping TypeName="dasa_bannihModel.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ClientID" ColumnName="ClientID" />
@@ -652,7 +652,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderProduct">
-            <EntityTypeMapping TypeName="Model.OrderProduct">
+            <EntityTypeMapping TypeName="dasa_bannihModel.OrderProduct">
               <MappingFragment StoreEntitySet="OrderProduct">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -662,7 +662,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="Model.Product">
+            <EntityTypeMapping TypeName="dasa_bannihModel.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -678,7 +678,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductType">
-            <EntityTypeMapping TypeName="Model.ProductType">
+            <EntityTypeMapping TypeName="dasa_bannihModel.ProductType">
               <MappingFragment StoreEntitySet="ProductType">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -686,7 +686,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
-            <EntityTypeMapping TypeName="Model.Role">
+            <EntityTypeMapping TypeName="dasa_bannihModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -694,7 +694,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ServiceType">
-            <EntityTypeMapping TypeName="Model.ServiceType">
+            <EntityTypeMapping TypeName="dasa_bannihModel.ServiceType">
               <MappingFragment StoreEntitySet="ServiceType">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -703,7 +703,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="Model.User">
+            <EntityTypeMapping TypeName="dasa_bannihModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />

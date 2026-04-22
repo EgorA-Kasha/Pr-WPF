@@ -16,6 +16,7 @@
 
         <DockPanel Grid.Row="0" Margin="10">
             <Button Content="Назад" Click="Back_Click" Padding="10,5" DockPanel.Dock="Left"/>
+            <Button Content="Выйти" Click="Logout_Click" Padding="10,5" Margin="10,0,10,0" DockPanel.Dock="Left"/>
             <Button Content="Сохранить" Click="Save_Click" Padding="10,5" DockPanel.Dock="Right"/>
         </DockPanel>
 

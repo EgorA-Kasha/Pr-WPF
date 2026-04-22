@@ -58,7 +58,8 @@ namespace Pr_WPF.Pages
             var displayList = query.Select(p => new
             {
                 Prod = p,
-                BgColor = p.Discount > 15 ? Brushes.LightGreen : Brushes.White
+                // Изменено условие окрашивания карточки (скидка > 0)
+                BgColor = p.Discount > 0 ? Brushes.LightGreen : Brushes.White
             }).ToList();
 
             ListProducts.ItemsSource = displayList;

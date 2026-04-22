@@ -35,8 +35,24 @@ namespace Pr_WPF.Pages
                     MessageBox.Show("Ваш аккаунт заморожен.");
                     return;
                 }
+
                 App.CurrentUser = user;
-                NavigationService.GoBack();
+
+                switch (user.RoleID)
+                {
+                    case 1:
+                        NavigationService.GoBack();
+                        break;
+                    case 2:
+                        NavigationService.Navigate(new MasterPage());
+                        break;
+                    case 3:
+                        NavigationService.Navigate(new ManagerPage());
+                        break;
+                    case 4:
+                        NavigationService.Navigate(new AdminPage());
+                        break;
+                }
             }
             else
             {

@@ -86,7 +86,14 @@ namespace Pr_WPF.Pages
             }
         }
 
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            App.CurrentUser = null;
+            NavigationService.Navigate(new StartPage());
+        }
+
         private void Back_Click(object sender, RoutedEventArgs e) => NavigationService.GoBack();
+
     }
 
     public class ServiceItem

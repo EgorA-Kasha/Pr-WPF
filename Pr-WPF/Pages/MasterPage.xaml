@@ -14,7 +14,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Content="Назад" Click="Back_Click" Margin="10" HorizontalAlignment="Left" Padding="10,5"/>
+        <DockPanel Grid.Row="0" Margin="10">
+            <Button Content="Назад" Click="Back_Click" Padding="10,5" DockPanel.Dock="Left"/>
+            <Button Content="Выйти" Click="Logout_Click" Padding="10,5" Margin="10,0,0,0" DockPanel.Dock="Left"/>
+        </DockPanel>
 
         <TabControl Grid.Row="1" Margin="10">
             <TabItem Header="Записи ко мне">
@@ -33,7 +36,6 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-
                     <ListBox x:Name="ListServices" Grid.Row="0" Margin="5">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -41,7 +43,6 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-
                     <Button Grid.Row="1" Content="Сохранить изменения услуг" Click="SaveServices_Click" Padding="10" Margin="5,10,5,5"/>
                 </Grid>
             </TabItem>
