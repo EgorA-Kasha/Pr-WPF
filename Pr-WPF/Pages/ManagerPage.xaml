@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ManagerPage">
 
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -40,8 +40,12 @@
                     <GroupBox Grid.Row="1" Header="Создание новой записи">
                         <StackPanel>
                             <WrapPanel Margin="5">
-                                <TextBlock Text="Клиент:" VerticalAlignment="Center" Margin="5"/>
-                                <ComboBox x:Name="ComboClients" Width="250" Margin="5" DisplayMemberPath="FullName"/>
+                                <TextBlock Text="Поиск клиента:" VerticalAlignment="Center" Margin="5"/>
+                                <TextBox x:Name="TxtClientSearch" Width="150" Margin="5" Padding="2" ToolTip="Имя или телефон"/>
+                                <Button Content="Найти" Click="SearchClient_Click" Margin="5" Padding="10,2"/>
+
+                                <TextBlock Text="Выбранный клиент:" VerticalAlignment="Center" Margin="15,5,5,5"/>
+                                <ComboBox x:Name="ComboClients" Width="200" Margin="5" DisplayMemberPath="FullName"/>
                             </WrapPanel>
 
                             <WrapPanel Margin="5">
@@ -82,7 +86,7 @@
             </TabItem>
 
             <TabItem Header="Заказы">
-                <DataGrid x:Name="GridOrders" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid x:Name="GridOrders" AutoGenerateColumns="False" CanUserAddRows="False" MouseDoubleClick="GridOrders_DoubleClick">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True"/>
                         <DataGridTextColumn Header="Дата заказа" Binding="{Binding OrderDate}" IsReadOnly="True"/>

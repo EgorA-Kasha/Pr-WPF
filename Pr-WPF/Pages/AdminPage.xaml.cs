@@ -29,6 +29,15 @@ namespace Pr_WPF.Pages
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            var self = App.db.User.Local.FirstOrDefault(u => u.ID == App.CurrentUser.ID);
+            if (self != null && self.IsFrozen)
+            {
+                MessageBox.Show("Вы не можете заморозить сами себя!");
+                self.IsFrozen = false;
+                GridUsers.Items.Refresh();
+                return;
+            }
+
             App.db.SaveChanges();
             MessageBox.Show("Изменения сохранены.");
         }

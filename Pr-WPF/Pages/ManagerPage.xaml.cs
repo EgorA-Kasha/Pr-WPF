@@ -37,6 +37,29 @@ namespace Pr_WPF.Pages
             ComboClients.ItemsSource = App.db.User.Where(u => u.RoleID == 1 && !u.IsFrozen).ToList();
         }
 
+        private void SearchClient_Click(object sender, RoutedEventArgs e)
+        {
+            string searchText = TxtClientSearch.Text.ToLower();
+            var clients = App.db.User.Where(u => u.RoleID == 1 && !u.IsFrozen).ToList();
+
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                clients = clients.Where(u => u.FullName.ToLower().Contains(searchText) || u.Phone.Contains(searchText)).ToList();
+            }
+
+            ComboClients.ItemsSource = clients;
+
+            if (clients.Count > 0)
+            {
+                ComboClients.SelectedIndex = 0;
+            }
+            else
+            {
+                ComboClients.ItemsSource = null;
+                MessageBox.Show("Клиенты не найдены.");
+            }
+        }
+
         private void ComboServices_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ComboServices.SelectedItem is ServiceType selectedService)
@@ -98,6 +121,14 @@ namespace Pr_WPF.Pages
                         App.db.Booking.Remove(b);
                     }
                 }
+            }
+        }
+
+        private void GridOrders_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (GridOrders.SelectedItem is Order selectedOrder)
+            {
+                NavigationService.Navigate(new ManagerOrderDetailsPage(selectedOrder));
             }
         }
 
