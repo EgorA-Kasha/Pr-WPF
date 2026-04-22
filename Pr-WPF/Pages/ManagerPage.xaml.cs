@@ -58,12 +58,23 @@ namespace Pr_WPF.Pages
                 return;
             }
 
+            string targetDateTime = PickerDate.SelectedDate.Value.ToString("dd.MM.yyyy") + " " + (ComboTime.SelectedItem as ComboBoxItem).Content.ToString();
+            int targetMasterID = (ComboMasters.SelectedItem as User).ID;
+
+            bool isTimeTaken = App.db.Booking.Any(b => b.MasterID == targetMasterID && b.DateTime == targetDateTime && b.Status == "Активна");
+
+            if (isTimeTaken)
+            {
+                MessageBox.Show("Это время у данного мастера уже занято. Пожалуйста, выберите другое время.");
+                return;
+            }
+
             Booking newBooking = new Booking
             {
                 ClientID = (ComboClients.SelectedItem as User).ID,
-                MasterID = (ComboMasters.SelectedItem as User).ID,
+                MasterID = targetMasterID,
                 ServiceTypeID = (ComboServices.SelectedItem as ServiceType).ID,
-                DateTime = PickerDate.SelectedDate.Value.ToString("dd.MM.yyyy") + " " + (ComboTime.SelectedItem as ComboBoxItem).Content.ToString(),
+                DateTime = targetDateTime,
                 PaymentMethod = (ComboPayment.SelectedItem as ComboBoxItem).Content.ToString(),
                 Comment = TxtComment.Text ?? "",
                 Status = "Активна"

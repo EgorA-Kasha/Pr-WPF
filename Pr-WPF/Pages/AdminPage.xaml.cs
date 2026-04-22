@@ -23,7 +23,8 @@ namespace Pr_WPF.Pages
         public AdminPage()
         {
             InitializeComponent();
-            GridUsers.ItemsSource = App.db.User.ToList();
+            App.db.User.ToList();
+            GridUsers.ItemsSource = App.db.User.Local;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
