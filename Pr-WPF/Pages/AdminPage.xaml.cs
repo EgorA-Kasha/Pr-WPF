@@ -23,17 +23,29 @@ namespace Pr_WPF.Pages
         public AdminPage()
         {
             InitializeComponent();
+
             App.db.User.ToList();
             GridUsers.ItemsSource = App.db.User.Local;
+
+            ColRole.ItemsSource = App.db.Role.ToList();
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            var self = App.db.User.Local.FirstOrDefault(u => u.ID == App.CurrentUser.ID);
-            if (self != null && self.IsFrozen)
+            bool hasAdminFreezeAttempt = false;
+
+            foreach (var user in App.db.User.Local)
             {
-                MessageBox.Show("Вы не можете заморозить сами себя!");
-                self.IsFrozen = false;
+                if (user.RoleID == 4 && user.IsFrozen)
+                {
+                    user.IsFrozen = false;
+                    hasAdminFreezeAttempt = true;
+                }
+            }
+
+            if (hasAdminFreezeAttempt)
+            {
+                MessageBox.Show("Нельзя замораживать администраторов (включая себя)! Статусы администраторов были восстановлены.");
                 GridUsers.Items.Refresh();
                 return;
             }

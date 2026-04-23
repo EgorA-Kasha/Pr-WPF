@@ -106,6 +106,14 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
+            
+            <TabItem Header="Производители">
+                <DataGrid x:Name="GridManufacturers" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
 
             <TabItem Header="Услуги">
                 <DataGrid x:Name="GridServices" AutoGenerateColumns="True"/>

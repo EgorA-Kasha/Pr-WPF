@@ -32,6 +32,7 @@ namespace Pr_WPF.Pages
             GridOrders.ItemsSource = App.db.Order.ToList();
             GridProducts.ItemsSource = App.db.Product.ToList();
             GridServices.ItemsSource = App.db.ServiceType.ToList();
+            GridManufacturers.ItemsSource = App.db.Manufacturer.ToList();
 
             ComboServices.ItemsSource = App.db.ServiceType.ToList();
             ComboClients.ItemsSource = App.db.User.Where(u => u.RoleID == 1 && !u.IsFrozen).ToList();
